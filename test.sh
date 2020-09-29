@@ -1,0 +1,3 @@
+echo copy files to packages ...
+cp -r ./src/components ./packages
+echo done!!

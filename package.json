@@ -1,16 +1,22 @@
 {
-  "name": "vue-ui-component",
-  "version": "0.1.0",
-  "private": true,
+  "name": "vue-ui-component-hds-test",
+  "version": "0.0.9",
+  "private": false,
+  "description": "custom vue components",
+  "main": "dist/vcolorpicker.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lib": "vue-cli-service build --target lib --name vcolorpicker --dest lib packages/index.js",
+    "test": "bash test.sh"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
+    "vue-ui-component-hds": "0.0.9",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
