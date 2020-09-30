@@ -62,7 +62,37 @@
         {{slider}}
       </div> -->
      
+      <BXBDialog 
+        v-on:okClick="okClick"
+        v-show="isDialogOpen" 
+        v-model="isDialogOpen" 
+        title="title here">
+        <!-- <div class="dialog-slot">this is a slot</div> -->
+        <TestComponent ref="testComponent"></TestComponent>
+      </BXBDialog>
+      {{isDialogOpen}}
+      <BXBButton @click="open" type="primary">open</BXBButton>
+      <BXBButton @click="btnClick" type="primary">ok</BXBButton>
+      <BXBButton :disabled="true" @click="btnClick" type="secondary">cancel</BXBButton>
+      <BXBIconButton @click="iconBtnClick" id="save"></BXBIconButton>
+      <BXBSnackbar v-model="isSnackbarOpen">msg</BXBSnackbar>
+      <BXBInputField 
+        :width="300"
+        v-model="inputText" 
+        :isHeadOn="true"
+        placeholder="account">
+      </BXBInputField>
+      {{inputText}}
 
+      <div class="drop-test">
+        <BXBDropdownMenu 
+          :maxLength="6"
+          :title="dropTitle" 
+          :testData="testData" 
+          :width="100" 
+          v-on:selectUpdate="selectUpdate">
+        </BXBDropdownMenu>
+      </div>
 
     </div>
   </div>
@@ -73,12 +103,15 @@
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 import { SortHelper } from '@/models/sortHelper.js'
+import TestComponent from '@/views/TestComponent.vue'
 
 export default {
   name: 'Home',
-  // components: {
-  //   HelloWorld
-  // }
+
+  components: {
+    TestComponent
+  },
+
   data: function() {
     return {
       // testData: ['*1', '*2', '*3', '*4', '*5'],
@@ -93,7 +126,11 @@ export default {
       singleBoxState: true,
       slider: 10,
       isSelectAllxx: false,
-      sortHelper: undefined
+      sortHelper: undefined,
+      isDialogOpen: false,
+      isSnackbarOpen: false,
+      inputText: '',
+      dropTitle: 'xxxxxxxxxxxqqqqqqqq'
     }
   },
 
@@ -131,6 +168,31 @@ export default {
       // } else {
       //   return {'transform': 'rotate(180deg)'}
       // }
+    },
+
+    btnClick: function () {
+      console.log('btn click')
+      // this.$refs.testComponent.run()
+      this.isSnackbarOpen = true
+    },
+
+    iconBtnClick: function () {
+      console.log('icon click')
+    },
+
+    open: function () {
+      this.isDialogOpen = !this.isDialogOpen
+    },
+
+    okClick: function () {
+      console.log('ok click')
+      this.$refs.testComponent.run()
+      this.isDialogOpen = false
+    },
+
+    selectUpdate: function (item) {
+      console.log('selectUpdate', item)
+      this.dropTitle = item.title
     }
 
   },
@@ -285,5 +347,13 @@ export default {
             color: #00a487
             width: 24px
             height: 24px
+  .drop-test
+    margin-top: 30px
+.dialog-slot
+  // margin: 16px 0
+  display: flex
+  justify-content: center
+  border: 1px solid
+  font-size: 40px
     
 </style>
