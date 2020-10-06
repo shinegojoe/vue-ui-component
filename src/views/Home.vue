@@ -8,18 +8,20 @@
         <div class="component-title">multi-checkbox</div>
         <!-- <BXBCheckbox v-model="isSelectAll" v-on:qq="qq"></BXBCheckbox> -->
 
-        <BXBCheckboxGrop v-model="selectedList" :dataLength="testData.length" v-on:qq="qq">
+        <BXBCheckboxGrop :isSelectAll="true" v-model="selectedList" :dataLength="testData.length" v-on:selectAllUpdate="selectAllUpdate">
           
           <div slot="select-all" class="head-wrapper">
-            <BXBCheckbox class="item0" v-model="isSelectAll"></BXBCheckbox>
+            <BXBCheckbox class="item0" v-model="isSelectAllModel"></BXBCheckbox>
+            <!-- <BXBCheckbox class="item0" v-model="isSelectAllxx" @click="selectAllClick"></BXBCheckbox> -->
+
             <div class="head-item item1">
               <div>Mic Preset Id</div>
-              <div @click="sortByString('title')" class="sort-icon" :style="sortHelper.checkIconState('title')"><i class="fas fa-arrow-down"></i></div>
+              <div @click="sortByString('title')" class="sort-icon" :style="checkIconState('title')"><i class="fas fa-arrow-down"></i></div>
             </div>
             <div class="head-item item2">Volume</div>
             <div class="head-item item3">
               <div>Status</div>
-              <div @click="sortByBool('status')" class="sort-icon" :style="sortHelper.checkIconState('status')"><i class="fas fa-arrow-down"></i></div>
+              <div @click="sortByBool('status')" class="sort-icon" :style="checkIconState('status')"><i class="fas fa-arrow-down"></i></div>
 
             </div>
             <div class="head-item item4">Action</div>
@@ -73,7 +75,7 @@
       {{isDialogOpen}}
       <BXBButton @click="open" type="primary">open</BXBButton>
       <BXBButton @click="btnClick" type="primary">ok</BXBButton>
-      <BXBButton :disabled="true" @click="btnClick" type="secondary">cancel</BXBButton>
+      <BXBButton :disabled="false" @click="loadingSwitch" type="secondary">loading</BXBButton>
       <BXBIconButton @click="iconBtnClick" id="save"></BXBIconButton>
       <BXBSnackbar v-model="isSnackbarOpen">msg</BXBSnackbar>
       <BXBInputField 
@@ -82,19 +84,61 @@
         :isHeadOn="true"
         placeholder="account">
       </BXBInputField>
+
+      <BXBInputField 
+        :width="300"
+        type="password"
+        v-model="inputText" 
+        :isHeadOn="true"
+        placeholder="password">
+      </BXBInputField>
       {{inputText}}
 
       <div class="drop-test">
         <BXBDropdownMenu 
           :maxLength="6"
           :title="dropTitle" 
-          :testData="testData" 
+          :data="testData" 
           :width="100" 
           v-on:selectUpdate="selectUpdate">
+        </BXBDropdownMenu>
+
+        <BXBDropdownMenu 
+          :maxLength="6"
+          :title="dropTitle" 
+          :data="testData" 
+          :width="100" 
+          v-on:selectUpdate="selectUpdate">
+        </BXBDropdownMenu>
+
+        <BXBDropdownMultiSelect 
+          :isSelectAll="false"
+          :maxLength="6"
+          :title="dropTitle" 
+          :data="testData" 
+          :width="100" 
+          v-on:selectUpdate="selectUpdate">
+        </BXBDropdownMultiSelect>
+      </div>
+
+      <div class='lang-menu-selector'>
+        <BXBDropdownMenu 
+          :isLeftIcon="true"
+          :isBorder="false"
+          :maxLength="10"
+          title="English" 
+          :data="[{'title': 'English'}, {'title': 'TW'}]" 
+          :width="140" 
+          :fontSize="16"
+          fontColor="#848484"
+          v-on:selectUpdate="selectUpdate">
+          <IconWrapper id="setting" w="28" h="28" color="#848484"></IconWrapper>
+
         </BXBDropdownMenu>
       </div>
 
     </div>
+    <BXBLoader v-model="isLoading"></BXBLoader>
   </div>
    
 </template>
@@ -115,6 +159,7 @@ export default {
   data: function() {
     return {
       // testData: ['*1', '*2', '*3', '*4', '*5'],
+      /* for multi select checkbox....................*/
       testData: [
         {title: '*1', status: true, volume: 0},
         {title: '*2', status: false, volume: 10},
@@ -123,51 +168,43 @@ export default {
         {title: '*5', status: true, volume: 40},
       ],
       selectedList: [],
+      isSelectAll: false,
+      sortHelper: undefined,
+      /* for multi select checkbox.....................*/
+
+
       singleBoxState: true,
       slider: 10,
-      isSelectAllxx: false,
-      sortHelper: undefined,
+      
       isDialogOpen: false,
       isSnackbarOpen: false,
       inputText: '',
-      dropTitle: 'xxxxxxxxxxxqqqqqqqq'
+      dropTitle: 'xxxxxxxxxxxqqqqqqqq',
+      isLoading: false
     }
   },
 
   methods: {
-    qq: function (val) {
-      console.log('qq')
-      this.isSelectAllxx = val
+    loadingSwitch: function () {
+      this.isLoading = !this.isLoading
     },
 
-    resetOther: function (name) {
-      for (const [key, value] of Object.entries(this.sortStateMap)) {
-        console.log(`${key}: ${value}`);
-        if(key !== name) {
-          this.sortStateMap[key] = false
-        }
-      }
+    selectAllUpdate: function (val) {
+      console.log('selectAllUpdate')
+      this.isSelectAllModel = val
+      // this.isSelectAll = val
     },
 
     sortByString: function (name) {
-      // this.resetOther(name)
-      // this.sortStateMap[name] = !this.sortStateMap[name]
       this.sortHelper.sortByString(this.testData, name)
     },
 
     sortByBool: function (name) {
-      // this.resetOther(name)
-      // this.sortStateMap[name] = !this.sortStateMap[name]
       this.sortHelper.sortByBool(this.testData, name)
     },
 
-    checkIconState: function (state) {
-      return checkIconState(state)
-      // if(state) {
-      //    return {'transform': 'rotate(0deg)'}
-      // } else {
-      //   return {'transform': 'rotate(180deg)'}
-      // }
+    checkIconState: function (name) {
+      return this.sortHelper.checkIconState(name)
     },
 
     btnClick: function () {
@@ -201,9 +238,24 @@ export default {
     this.sortHelper = new SortHelper()
   },
 
+  // watch: {
+  //   isSelectAllxx(val) {
+  //     console.log('is', val)
+  //     if(val) {
+  //         // this.selectedList = this.testData
+  //         this.selectedList = this.testData.map((item, index)=>{
+  //           return item.title
+  //         })
+  //       } else {
+  //         this.selectedList = []
+  //       }
+  //   }
+  // },
+
   computed: {
-    isSelectAll: {
+    isSelectAllModel: {
       set(val) {
+        console.log('set', val)
         if(val) {
           // this.selectedList = this.testData
           this.selectedList = this.testData.map((item, index)=>{
@@ -212,11 +264,11 @@ export default {
         } else {
           this.selectedList = []
         }
-        this.isSelectAllxx = val
+        this.isSelectAll = val
       },
 
       get() {
-        return this.isSelectAllxx
+        return this.isSelectAll
       }
     }
   }
@@ -349,6 +401,11 @@ export default {
             height: 24px
   .drop-test
     margin-top: 30px
+
+  .lang-menu-selector
+    margin: 30px
+    // display: flex
+    // color: black
 .dialog-slot
   // margin: 16px 0
   display: flex

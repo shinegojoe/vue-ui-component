@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    <div class="checkbox-wrapperXXX">
+    <div class="--checkbox-wrapper">
       <input type="checkbox" v-model="model" :checked="isActivate" :value="label" />
     </div>
     <!-- {{model}} -->
@@ -39,6 +39,7 @@ export default {
       },
       set(value) {
         // console.log('set', value)
+        this.checkboxGrop.checkSelectAll(value)
         this.checkboxGrop.$emit('input', value)
       }
     }
@@ -56,29 +57,32 @@ export default {
 
 <style lang="sass" scoped>
 
-.checkbox-wrapperXXX
+.--checkbox-wrapper
+  display: flex
+  align-items: center
   input[type=checkbox]
     -webkit-appearance: none
     -moz-appearance: none
-    height: 20px
+    height: 16px
+    width: 16px
     outline: none
     display: inline-block
-    vertical-align: top
+    // vertical-align: top
     position: relative
     margin: 0
     cursor: pointer
-    border: 2px solid #979797
+    border: 1px solid #979797
+    border-radius: 2px
     background: white
     transition: background .3s, border-color .3s, box-shadow .2s
-    width: 20px
     &::after
       content: ''
-      width: 9px
-      height: 5px
+      width: 8px
+      height: 4px
       position: absolute
-      top: 2px
+      top: 3px
       left: 2px
-      border: 2px solid white
+      border: 1px solid white
       border-top: none
       border-right: none
       background: transparent
@@ -86,7 +90,7 @@ export default {
       transform: rotate(-45deg)
     
     &:checked 
-      background-color: #2f52a2
+      background-color: #00615d
       &::after
         opacity: 1
 
