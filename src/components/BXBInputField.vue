@@ -1,14 +1,15 @@
 <template>
   <div>
     <div v-show="isHeadOn" class="head-title">{{placeholder}}</div>
-    <input 
-      v-model="inputVal"
-      :style="{width: width + 'px'}"
-      :type="type" 
-      :placeholder="placeholder"
-      :disabled="disabled"
-      :class="{'is-disabled': disabled}"
-      class="input-field-wrapper">
+      <input 
+        v-on="$listeners"
+        :style="{width: width + 'px'}"
+        :type="type" 
+        :placeholder="placeholder"
+        :disabled="disabled"
+        :class="{'is-disabled': disabled}"
+        class="input-field-wrapper"
+      >
   </div>
 </template>
 
@@ -20,6 +21,7 @@ export default {
     value: {
 
     },
+
     isHeadOn: {
       type: Boolean,
       default: false
@@ -44,19 +46,7 @@ export default {
       default: 200
     }
   },
-
-  computed: {
-    inputVal: {
-      set(val) {
-
-        this.$emit('input', val)
-      },
-
-      get() {
-        return this.value
-      }
-    }
-  }
+  
 }
 </script>
 
@@ -70,6 +60,7 @@ export default {
   line-height: normal
   letter-spacing: normal
   color: #292f34
+  
   text-transform: capitalize
   margin-left: 3px
 

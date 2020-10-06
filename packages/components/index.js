@@ -9,6 +9,9 @@ import BXBDropdownMenu from './BXBDropdownMenu.vue'
 import IconWrapper from './IconWrapper.vue'
 import BaseButton from './button/BaseButton.vue'
 import BXBTextField from './BXBTextField.vue'
+import BXBLoader from './BXBLoader.vue'
+import BXBDialog from './BXBDialog.vue'
+import BXBSnackbar from './BXBSnackbar.vue'
 
 const components = [
   // BXBCheckboxGrop,
@@ -19,7 +22,10 @@ const components = [
   BXBDropdownMenu,
   IconWrapper,
   BaseButton,
-  BXBTextField
+  BXBTextField,
+  BXBDialog,
+  BXBLoader,
+  BXBSnackbar
 ]
 
 const install  = function (Vue) {

@@ -80,16 +80,23 @@
       <BXBSnackbar v-model="isSnackbarOpen">msg</BXBSnackbar>
       <BXBInputField 
         :width="300"
-        v-model="inputText" 
+        :value="inputText"
+         @input="(e)=>{
+          inputText = e.target.value
+        }"
         :isHeadOn="true"
         placeholder="account">
       </BXBInputField>
 
       <BXBInputField 
+        @keyup.enter="qqTest"
         :width="300"
-        type="password"
-        v-model="inputText" 
+        :value="inputText"
+        @input="(e)=>{
+          inputText = e.target.value
+        }"
         :isHeadOn="true"
+        type="password"
         placeholder="password">
       </BXBInputField>
       {{inputText}}
@@ -156,6 +163,12 @@ export default {
     TestComponent
   },
 
+  watch: {
+    inputText: function(val) {
+      // console.log('val', val.target.value)
+    }
+  },
+
   data: function() {
     return {
       // testData: ['*1', '*2', '*3', '*4', '*5'],
@@ -185,6 +198,10 @@ export default {
   },
 
   methods: {
+    qqTest: function(val) {
+      console.log('qqTest', val)
+    },
+
     loadingSwitch: function () {
       this.isLoading = !this.isLoading
     },
