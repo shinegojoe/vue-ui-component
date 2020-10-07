@@ -1,6 +1,6 @@
 {
   "name": "vue-ui-component-hds",
-  "version": "0.0.15",
+  "version": "0.0.18",
   "private": false,
   "description": "custom vue components",
   "main": "dist/vcolorpicker.umd.min.js",
@@ -16,7 +16,7 @@
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
-    "vue-ui-component-hds": "0.0.12",
+    "vue-ui-component-hds": "0.0.16",
     "vuex": "^3.4.0"
   },
   "devDependencies": {

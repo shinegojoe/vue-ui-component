@@ -1,6 +1,6 @@
 <template>
   <div id="text-field-container">
-    <div class="text-style" :style="styleInit()">
+    <div class="text-style" :style="styleInit()" :class="[`text-${textType}`]">
       <slot></slot>
 
     </div>
@@ -30,6 +30,11 @@ export default {
     weight: {
       type: String,
       default: 'normal'
+    },
+
+    textType: {
+      type: String,
+      default: 'capitalize'
     }
   },
 
@@ -56,4 +61,12 @@ export default {
   line-height: normal
   letter-spacing: normal
   color: black
+  
+.text-uppercase
+  text-transform: uppercase
+.text-capitalize
+  text-transform: capitalize
+.text-lowercase
+  text-transform: lowercase
+
 </style>

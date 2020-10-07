@@ -1,27 +1,34 @@
 
-// import BXBCheckboxGrop from './ckeckbox/BXBCheckboxGrop'
-// import BXBCheckboxGropSub from './ckeckbox/BXBCheckboxGropSub'
-// import BXBCheckbox from './ckeckbox/BXBCheckbox'
-// import BXBSlider from './BXBSlider'
+import BXBCheckboxGrop from './ckeckbox/BXBCheckboxGrop'
+import BXBCheckboxGropSub from './ckeckbox/BXBCheckboxGropSub'
+import BXBCheckbox from './ckeckbox/BXBCheckbox'
+import BXBSlider from './BXBSlider'
 // import VueRouter from 'vue-router'
 import BXBInputField from './BXBInputField.vue'
 import BXBDropdownMenu from './BXBDropdownMenu.vue'
 import IconWrapper from './IconWrapper.vue'
 import BaseButton from './button/BaseButton.vue'
+import BXBButton from './button/BXBButton.vue'
+import BXBIconButton from './button/BXBIconButton.vue'
+
 import BXBTextField from './BXBTextField.vue'
 import BXBLoader from './BXBLoader.vue'
 import BXBDialog from './BXBDialog.vue'
 import BXBSnackbar from './BXBSnackbar.vue'
 
 const components = [
-  // BXBCheckboxGrop,
-  // BXBCheckboxGropSub,
-  // BXBCheckbox,
-  // BXBSlider,
+  BXBCheckboxGrop,
+  BXBCheckboxGropSub,
+  BXBCheckbox,
+  BXBSlider,
   BXBInputField,
   BXBDropdownMenu,
   IconWrapper,
+  
   BaseButton,
+  BXBButton,
+  BXBIconButton,
+
   BXBTextField,
   BXBDialog,
   BXBLoader,

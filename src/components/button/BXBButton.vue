@@ -1,10 +1,17 @@
 <template>
   <div>
-    <button @click="btnClick" class="btn-base" 
+    <button @click="btnClick" class="btn-base btn-margin" 
+      :style="styleInit()"
       :class="[`btn-${type}`, {
         'is-disabled': disabled
       }]">
-      <slot></slot>
+      <div class="slot-wrapper" :class="{'is-add-icon': isAddIcon}">
+        <slot></slot>
+        <div class="btn-icon">
+          <slot name="icon"></slot>
+        </div>
+      </div>
+     
     </button>
    
   </div>
@@ -23,12 +30,29 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+
+    margin: {
+      type: String,
+      default: '0 4px 0 4px'
+    },
+
+    isAddIcon: {
+      type: Boolean,
+      default: false
     }
+
   },
 
   methods: {
     btnClick: function (e) {
       this.$emit('click', e)
+    },
+
+    styleInit: function () {
+      return {
+        '--margin': this.margin
+      }
     }
   }
   
@@ -37,28 +61,31 @@ export default {
 
 <style lang="sass" scoped>
 .btn-base
+  --margin: 0 0 0 0 
   position: relative
   border: none
-  min-width: 111px
-  height: 36px
-  padding: 0 22px
+  min-width: 104px
+  height: 32px
+  // padding: 0 22px
   // border-radius: 26px
   text-transform: uppercase
   color: white
-  background-color: #2f52a2
+  // background-color: #2f52a2
   // transition: background-color 0.5s ease-in-out
   // transition: opacity 0.5s ease-in-out
   transition-property: background-color
   transition-duration: 0.3s
   transition-timing-function: ease
   cursor: pointer
+  border-radius: 3px
 
   font-size: 12px
-  font-weight: bold
+  // font-weight: bold
   font-stretch: normal
   font-style: normal
   line-height: normal
   letter-spacing: normal
+
   &:after
     content: ""
     position: absolute
@@ -71,6 +98,7 @@ export default {
     background: rgba(white,.1)
     // border-radius: 26px
     transition: width .1s ease, height .1s ease
+
   
   &:focus
     outline: 0
@@ -83,7 +111,7 @@ export default {
     // background-color: rgba(255, 255, 255, 0.9)
     // opacity: 0.8
     &:after
-      width: 111px
+      width: 100%
       height: 36px
 
 .btn-primary
@@ -93,11 +121,50 @@ export default {
   background-color: white
   color: #00615d
   border: 2px solid #00615d
-  border-radius: 3px
+  box-sizing: border-box
+
+
+.btn-third
+  background-color: #00a487
+
+.btn-gray-light
+  background-color: #ababab
+
+.btn-gray-dark
+  background-color: #888888
+
+.btn-warning
+  background-color: #D35F6B
+
+
+.btn-bg-color
+
+.btn-margin
+  margin: var(--margin)
+
 
 .is-disabled
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4)
   pointer-events: none
   cursor: not-allowed
+
+
+.slot-wrapper
+  display: flex
+  align-items: center
+  // justify-content: space-between
+  padding: 0 6px
+  box-sizing: border-box
+  justify-content: center
+  // position: relative
+    
+.is-add-icon
+  justify-content: space-between
+  padding: 0 6px
+  .btn-icon
+    // background-color: red
+    padding-left: 6px
+
 
 
 

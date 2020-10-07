@@ -38,10 +38,11 @@ $secondary: #00a487
   position: absolute
   width: 300px
   height: 200px
-  top: 40%
+  top: 50%
   left: 50%
   transform: translate(-50%, -50%)
-  background-color: rgba(255, 255, 255, 0.9)
+  // background-color: rgba(255, 255, 255, 0.9)
+  background-color: rgb(255, 255, 255)
   border-radius: 5px
   box-shadow: 0.5px 0.5px 5px 0 $secondary
 
