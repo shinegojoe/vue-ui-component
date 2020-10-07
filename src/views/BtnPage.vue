@@ -18,7 +18,7 @@
         </div>
         <div class="note-wrapper">
           <BXBTextField textType="capitalize" color="#979797" :size="16">
-            height: 32px, 文字置中, 文字過長會自動撐開左右各留6px
+            height: 32px, 文字置中, 文字過長會自動撐開左右各留8px
           </BXBTextField>
         </div>
       </div>
@@ -39,7 +39,7 @@
 
          <div class="note-wrapper">
           <BXBTextField textType="capitalize" color="#979797" :size="16">
-            height: 32px, 中間間隙自動撐開, icon與左邊文字6px, 左右間距6px
+            height: 32px, 左右間距6px, 中間間隙自動撐開, icon與左邊文字8px
           </BXBTextField>
         </div>
       </div>

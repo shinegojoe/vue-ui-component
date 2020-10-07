@@ -134,7 +134,7 @@ export default {
   background-color: #888888
 
 .btn-warning
-  background-color: #D35F6B
+  background-color: #C30D23
 
 
 .btn-bg-color
@@ -144,7 +144,8 @@ export default {
 
 
 .is-disabled
-  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4)
+  background-color: #E0E0E0
+  color: #B0B0B0
   pointer-events: none
   cursor: not-allowed
 
@@ -153,14 +154,16 @@ export default {
   display: flex
   align-items: center
   // justify-content: space-between
-  padding: 0 6px
+  padding: 0 8px
   box-sizing: border-box
   justify-content: center
   // position: relative
     
 .is-add-icon
   justify-content: space-between
-  padding: 0 6px
+  box-sizing: border-box
+
+  padding: 0 8px
   .btn-icon
     // background-color: red
     padding-left: 6px
