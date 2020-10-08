@@ -35,6 +35,11 @@ const routes = [
   {
     path: '/input-component-page',
     component: () => import('../views/InputComponentPage.vue')
+  },
+
+  {
+    path: '/navbar-page',
+    component: () => import('../views/NavPage.vue')
   }
 ]
 

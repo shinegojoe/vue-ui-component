@@ -20,6 +20,7 @@ import IconWrapper from './components/IconWrapper.vue'
 import BaseButton from './components/button/BaseButton.vue'
 import BXBTextField from './components/BXBTextField.vue'
 import BXBLoader from './components/BXBLoader.vue'
+import BXBNavbar from './components/Navbar.vue'
 
 import _main from './sass/main.sass'
 // import xx from '../packages/index.js'
@@ -50,6 +51,7 @@ Vue.component(BXBTextField.name, BXBTextField)
 Vue.component(BXBLoader.name, BXBLoader)
 Vue.component(BXBSwitch.name, BXBSwitch)
 Vue.component(BXBRadio.name, BXBRadio)
+Vue.component(BXBNavbar.name, BXBNavbar)
 
 
 
