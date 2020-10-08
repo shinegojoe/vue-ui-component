@@ -252,6 +252,7 @@ export default {
   },
 
   created: function () {
+    console.log('xx', SortHelper.name)
     this.sortHelper = new SortHelper()
   },
 

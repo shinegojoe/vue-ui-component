@@ -15,6 +15,7 @@ import BXBTextField from './BXBTextField.vue'
 import BXBLoader from './BXBLoader.vue'
 import BXBDialog from './BXBDialog.vue'
 import BXBSnackbar from './BXBSnackbar.vue'
+import { SortHelper } from '../models/sortHelper.js'
 
 const components = [
   BXBCheckboxGrop,
@@ -32,7 +33,7 @@ const components = [
   BXBTextField,
   BXBDialog,
   BXBLoader,
-  BXBSnackbar
+  BXBSnackbar,
 ]
 
 const install  = function (Vue) {
@@ -42,4 +43,5 @@ const install  = function (Vue) {
   })
 }
 
-export default { install }
+// export default { install, SortHelper }
+export { install, SortHelper }

@@ -30,6 +30,11 @@ const routes = [
   {
     path: '/btn-page',
     component: () => import('../views/BtnPage.vue')
+  },
+
+  {
+    path: '/input-component-page',
+    component: () => import('../views/InputComponentPage.vue')
   }
 ]
 

@@ -5,6 +5,8 @@ import store from './store'
 import BXBCheckboxGropSub from './components/ckeckbox/BXBCheckboxGropSub.vue'
 import BXBCheckboxGrop from './components/ckeckbox/BXBCheckboxGrop.vue'
 import BXBCheckbox from './components/ckeckbox/BXBCheckbox.vue'
+import BXBSwitch from './components/ckeckbox/BXBSwitch.vue'
+import BXBRadio from './components/ckeckbox/BXBRadio.vue'
 import BXBSlider from './components/BXBSlider.vue'
 import BXBDropdown from './components/BXBDropdownMenu.vue'
 import BXBDialog from './components/BXBDialog.vue'
@@ -46,6 +48,8 @@ Vue.component(IconWrapper.name, IconWrapper)
 Vue.component(BaseButton.name, BaseButton)
 Vue.component(BXBTextField.name, BXBTextField)
 Vue.component(BXBLoader.name, BXBLoader)
+Vue.component(BXBSwitch.name, BXBSwitch)
+Vue.component(BXBRadio.name, BXBRadio)
 
 
 

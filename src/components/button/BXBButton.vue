@@ -2,7 +2,7 @@
   <div>
     <button @click="btnClick" class="btn-base btn-margin" 
       :style="styleInit()"
-      :class="[`btn-${type}`, {
+      :class="[`--btn-${type}`, {
         'is-disabled': disabled
       }]">
       <div class="slot-wrapper" :class="{'is-add-icon': isAddIcon}">
@@ -114,30 +114,29 @@ export default {
       width: 100%
       height: 36px
 
-.btn-primary
+.--btn-primary
   background-color: #00615d
 
-.btn-secondary
+.--btn-secondary
   background-color: white
   color: #00615d
   border: 2px solid #00615d
   box-sizing: border-box
 
 
-.btn-third
+.--btn-third
   background-color: #00a487
 
-.btn-gray-light
+.--btn-gray-light
   background-color: #ababab
 
-.btn-gray-dark
+.--btn-gray-dark
   background-color: #888888
 
-.btn-warning
+.--btn-warning
   background-color: #C30D23
 
 
-.btn-bg-color
 
 .btn-margin
   margin: var(--margin)
