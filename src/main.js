@@ -21,6 +21,7 @@ import BaseButton from './components/button/BaseButton.vue'
 import BXBTextField from './components/BXBTextField.vue'
 import BXBLoader from './components/BXBLoader.vue'
 import BXBNavbar from './components/Navbar.vue'
+import BXBTab from './components/BXBTab.vue'
 
 import _main from './sass/main.sass'
 // import xx from '../packages/index.js'
@@ -52,6 +53,7 @@ Vue.component(BXBLoader.name, BXBLoader)
 Vue.component(BXBSwitch.name, BXBSwitch)
 Vue.component(BXBRadio.name, BXBRadio)
 Vue.component(BXBNavbar.name, BXBNavbar)
+Vue.component(BXBTab.name, BXBTab)
 
 
 

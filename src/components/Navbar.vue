@@ -16,8 +16,8 @@
           <BXBTextField class="item-name" :size="18">{{item.name}}</BXBTextField>
         </div>
         <div :class="subPageTransition(item)">
-          <div class="sub-item" v-for="(subPage, subIndex) in item.subPages" :key="subIndex">
-            <div @click="subItemClick($event, subPage)" class="">{{ subPage.title }}</div>
+          <div @click="subItemClick($event, subPage)"  class="sub-item" v-for="(subPage, subIndex) in item.subPages" :key="subIndex">
+            <div class="">{{ subPage.title }}</div>
             <!-- <BXBTextField class="sub-title" :size="12">{{subPage.title}}</BXBTextField> -->
 
           </div>
@@ -27,7 +27,8 @@
        </div> -->
       </div>
     </div>
-    <div v-show="isSidebarOpen" class="bg-coverxx"></div>
+    <div ref="cover" v-show="isSidebarOpen" class="bg-coverxx"></div>
+    
   </div>
 </template>
 
@@ -143,7 +144,7 @@ export default {
     },
 
     subItemClick(e, item){
-      console.log('sub', item)
+      console.log('sub', item.title)
       e.stopPropagation();
     },
 
@@ -154,11 +155,18 @@ export default {
   },
 
   created: function() {
-    window.addEventListener("click", this.closeOutside);
+    // window.addEventListener("click", this.closeOutside);
+  },
+
+  mounted: function() {
+    const cover = this.$refs.cover
+    cover.addEventListener('click', ()=>{
+      this.closeOutside()
+    })
   },
 
   beforeDestroy() {
-    window.removeEventListener("click", this.closeOutside);
+    // window.removeEventListener("click", this.closeOutside);
   }
 };
 </script>
@@ -198,7 +206,7 @@ export default {
     height: auto
     opacity: 1
     transform: scaleY(1)
-    z-index: -1
+    // z-index: -1
     position: relative
 
 @keyframes subOut
@@ -210,7 +218,7 @@ export default {
   to
     height: 0
     opacity: 0
-    z-index: -1
+    // z-index: -1
     position: relative
 
 @keyframes cover
@@ -239,7 +247,8 @@ export default {
 
 
   .sidebar-wrapper
-    position: absolute
+    // position: absolute
+    position: fixed
     // height: calc( 100vh - 100px )
     height: 100vh
     width: 0px
@@ -282,7 +291,7 @@ export default {
       .sub-item
         position: relative
         // background-color: red
-        z-index: 100
+        // z-index: 100
         height: 30px
         display: flex
         align-items: center
@@ -304,7 +313,7 @@ export default {
     opacity: 1
 
   .bg-coverxx
-    position: absolute
+    position: fixed
     // top: 50%
     // left: 50%
     top: 0
@@ -314,7 +323,7 @@ export default {
     height: 0px
     opacity: 0.2
     background-color: rgba(0, 0, 0, 0.5)
-    // z-index: 10
+    z-index: 1
     animation-name: cover
     animation-duration: 0.05s
     animation-fill-mode: forwards

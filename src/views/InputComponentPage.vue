@@ -172,7 +172,7 @@ export default {
 <style lang="sass" scoped>
 #input-component-container
   background-color: #f2f2f2
-  height: 100vh
+  // height: 100vh
   .mt-20
     margin-top: 20px
   .content-wrapper
@@ -184,6 +184,7 @@ export default {
     .input-field-wrapper
       width: 800px
       margin-top: 40px
+      margin-bottom: 40px
       padding: 20px
       background-color: white
       display: flex

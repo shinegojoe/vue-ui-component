@@ -73,7 +73,8 @@ export default {
 <style lang="sass" scoped>
 #btn-page-container
   background-color: #f2f2f2
-  height: 100vh
+  // height: 100vh
+  height: calc(100vh - 80px)
   .note-wrapper
     margin-top: 12px
   .content-wrapper

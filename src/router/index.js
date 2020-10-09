@@ -40,6 +40,11 @@ const routes = [
   {
     path: '/navbar-page',
     component: () => import('../views/NavPage.vue')
+  },
+
+  {
+    path: '/tab-page',
+    component: () => import('../views/TabPage.vue')
   }
 ]
 
