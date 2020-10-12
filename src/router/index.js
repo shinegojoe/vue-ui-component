@@ -45,6 +45,11 @@ const routes = [
   {
     path: '/tab-page',
     component: () => import('../views/TabPage.vue')
+  },
+
+  {
+    path: '/dropdown-page',
+    component: () => import('../views/DropdownPage.vue')
   }
 ]
 

@@ -1,5 +1,5 @@
 <template>
-  <div ref="dropdownWrapper" class="multi-dropdown-wrapper">
+  <div ref="dropdownWrapper" class="multi-dropdown-wrapper" :style="styleInit()">
     <div class="menu-btn" @click="menuClick" v-bind:style="menuColor()">
       <div class="menu-title">{{titleFilter(title)}}</div>
       <div 
@@ -14,14 +14,23 @@
       ref="dropdown" 
       :style="{width: width + 'px'}"
       class="item-list-wrapper" 
-      v-bind:class="{ 'menu-open': isOpen }">
-       <BXBCheckboxGrop :isSelectAll="isSelectAll" v-model="selectedList" :dataLength="data.length" v-on:qq="qq">
-          <div @click="itemClick" :style="{width: width + 'px'}" slot="box-grop" class="rowz" v-for="(item, index) in data" :key="index">
-            <BXBCheckboxGropSub :label="item.title"></BXBCheckboxGropSub>
-            <!-- <div class="item1">{{item.title}}</div> -->
+      v-bind:class="{ 'menu-open': isOpen, 'scroll': this.maxHeight !== 0}">
+       <BXBCheckboxGrop :isSelectAll="isSelectAll" v-model="model" :dataLength="data.length" v-on:qq="qq">
+          <div @click="itemClick($event, item)" :style="{width: width + 'px'}" slot="box-grop" class="rowz" v-for="(item, index) in data" :key="index">
+            <BXBCheckboxGropSub 
+            :boxSize="$attrs['boxSize']" 
+            :check-w="$attrs['checkW']"
+            :check-h="$attrs['checkH']"
+            :check-top="$attrs['checkTop']"
+            :check-left="$attrs['checkLeft']"
+
+            :ref="item.title" 
+            :label="item.title"></BXBCheckboxGropSub>
+            <!-- <div class="item-title">{{item.isChecked}}</div> -->
+            <BXBTextField class="item-title" textType="capitalize" color="#00a487" :size="12">{{item.title}}</BXBTextField>
+
           </div>
         </BXBCheckboxGrop>
-     
     </div>
   </div>
 </template>
@@ -33,6 +42,10 @@ export default {
   name: 'BXBDropdownMultiSelect',
 
   props: {
+    value: {
+
+    },
+
     data: {
       type: Array,
       default: []
@@ -54,14 +67,24 @@ export default {
     },
 
     title: {
-      type: String,
+      type: [String, Array],
       default: ''
     },
 
     isSelectAll: {
       type: Boolean,
       default: false
+    },
+
+    maxHeight: {
+      type: Number,
+      default: 20
+      // turn to scroll mode if maxHeight is not zero
     }
+
+    // boxSize: {
+      
+    // }
   },
 
   data: function () {
@@ -69,21 +92,37 @@ export default {
       closeOutsideManager: undefined,
       // title: 'open',
       isOpen: false,
-      selectedList: [],
+      // selectedList: ['item1'],
       // maxLength: 40
     }
   },
 
   // watch: {
-  //   testData: function () {
-  //     console.log('www')
-  //     this.selectedListInit()
+  //   selectedList: function () {
+  //     // console.log('www')
+  //     this.$emit('input', this.selectedList)
+  //     // this.selectedListInit()
   //   }
   // },
 
   methods: {
     qq: function () {
+      console.log('qq click')
+    },
 
+    styleInit: function () {
+      let pl = 0
+      if(this.isLeftIcon) {
+        pl = 22
+      }
+
+      return {
+        '--title-size': this.fontSize + 'px',
+        '--title-color': this.fontColor,
+        '--padding-left': pl + 'px',
+        '--height': this.height + 'px',
+        '--max-height': this.maxHeight + 'px'
+      }
     },
 
     menuColor: function () {
@@ -101,12 +140,37 @@ export default {
     },
 
     titleFilter: function (title) {
-      if(title.length > this.maxLength) {
-        const newTitle = title.slice(0, this.maxLength)
+      
+      if(Array.isArray(title)) {
+        console.log('isArray')
+        if(title.length === 0) {
+          return 
+        }
+        let newTitle = ''
+        for(const item of title) {
+          newTitle += item
+          newTitle += ', '
+          if(newTitle.length > this.maxLength) {
+            newTitle = newTitle.slice(0, newTitle.length - 2)
+            newTitle += '.....'
+            break
+          }
+        }
+        newTitle = newTitle.slice(0, newTitle.length - 2)
+        // newTitle += '...'
         return newTitle
+
+      } else {
+        if(title.length > this.maxLength) {
+          let newTitle = title.slice(0, this.maxLength)
+          return newTitle
+        }
+        else {
+          return title
+        }
       }
 
-      return title
+      // return title
     },
 
     menuClick: function (e) {
@@ -116,8 +180,21 @@ export default {
     },
 
     itemClick: function (e, item) {
-      // console.log('item', item)
-      // this.$emit('selectUpdate', item)
+      console.log('item', item)
+      // this.model = []
+      const data = this.model
+      console.log('data', data)
+      const index = data.indexOf(item.title)
+      console.log('index', index)
+      if(index === -1) {
+        data.push(item.title)
+      } else {
+        const newData = data.filter((dItem, index)=>{
+          return dItem !== item.title 
+        })
+        this.model = newData
+      }
+      this.$emit('inputXX', this.model)
       e.stopPropagation()
     },
 
@@ -160,6 +237,15 @@ export default {
         // this.updateTitle()
         return this.data
       }
+    },
+
+    model: {
+      set: function(val) {
+        this.$emit('input', val)
+      },
+      get: function () {
+        return this.value
+      }
     }
   },
 
@@ -184,7 +270,9 @@ export default {
 // @import '@/sass/_guidelines.sass'
 
 .multi-dropdown-wrapper
+  // --max-height: 1
   position: relative
+
   .menu-btn
     width: 330px
     height: 26px
@@ -217,6 +305,21 @@ export default {
     visibility: hidden
     position: absolute
     z-index: 2
+  .scroll
+    // display: inline
+    // visibility: hidden
+    overflow-y: scroll
+    height: var(--max-height)
+    // width: 100%
+    &::-webkit-scrollbar
+      width: 6px
+      height: 0px
+      background-color: #efefef
+    &::-webkit-scrollbar-thumb
+      border-radius: 30px
+      background-color: #dcdcdc
+      // min-height: 70px
+      
 
   .menu-open
     // display: inline
@@ -227,6 +330,8 @@ export default {
     height: 32px
     display: flex
     align-items: center
+    padding: 0 16px
+    box-sizing: border-box
 
     // justify-content: space-around
     // background-color: white
@@ -235,6 +340,8 @@ export default {
     &:hover
       background-color: rgba(147, 255, 224, 0.2)
     // visibility: hidden
+    .item-title
+      margin-left: 16px
     .item-text
       margin-left: 16px
       display: flex

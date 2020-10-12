@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    <div class="--checkbox-wrapper">
+    <div class="--checkbox-wrapper" :style="styleInit()">
       <input type="checkbox" v-model="model" :checked="isActivate" :value="label" />
     </div>
     <!-- {{model}} -->
@@ -22,9 +22,35 @@ export default {
     value: {
       type: Boolean,
       defalut: false
+    },
+
+    boxSize: {
+      type: Number,
+      default: 16
+    },
+
+    checkW: {
+      type: Number,
+      default: 8
+    },
+
+    checkH: {
+      type: Number,
+      default: 4
+    },
+
+    checkTop: {
+      type: Number,
+      default: 3
+    },
+
+    checkLeft: {
+      type: Number,
+      default: 2
     }
    
   },
+
   inject: {
     checkboxGrop: {
       default: ''
@@ -38,7 +64,7 @@ export default {
         return this.checkboxGrop.value
       },
       set(value) {
-        // console.log('set', value)
+        console.log('set', value)
         this.checkboxGrop.checkSelectAll(value)
         this.checkboxGrop.$emit('input', value)
       }
@@ -49,6 +75,22 @@ export default {
     isActivate: function () {
       // console.log('isA', this.model)
       return this.model.includes(this.label)
+    },
+
+    setModel(val) {
+      this.model = val
+    },
+
+    styleInit() {
+      const styleObj = {
+        '--box-size': this.boxSize + 'px',
+        '--check-w': this.checkW + 'px',
+        '--check-h': this.checkH + 'px',
+        '--check-top': this.checkTop + 'px',
+        '--check-left': this.checkLeft + 'px'
+      }
+
+      return styleObj
     }
   }
 
@@ -58,13 +100,20 @@ export default {
 <style lang="sass" scoped>
 
 .--checkbox-wrapper
+  --box-size: 12px
+  --check-w: 0
+  --check-h: 0
+  --check-top: 0
+  --check-left: 0
+
   display: flex
   align-items: center
+
   input[type=checkbox]
     -webkit-appearance: none
     -moz-appearance: none
-    height: 16px
-    width: 16px
+    height: var(--box-size)
+    width: var(--box-size)
     outline: none
     display: inline-block
     // vertical-align: top
@@ -77,11 +126,11 @@ export default {
     transition: background .3s, border-color .3s, box-shadow .2s
     &::after
       content: ''
-      width: 8px
-      height: 4px
+      width: var(--check-w)
+      height: var(--check-h)
       position: absolute
-      top: 3px
-      left: 2px
+      top: var(--check-top)
+      left: var(--check-left)
       border: 1px solid white
       border-top: none
       border-right: none

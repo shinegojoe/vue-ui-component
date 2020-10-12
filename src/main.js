@@ -8,14 +8,14 @@ import BXBCheckbox from './components/ckeckbox/BXBCheckbox.vue'
 import BXBSwitch from './components/ckeckbox/BXBSwitch.vue'
 import BXBRadio from './components/ckeckbox/BXBRadio.vue'
 import BXBSlider from './components/BXBSlider.vue'
-import BXBDropdown from './components/BXBDropdownMenu.vue'
+// import BXBDropdown from './components/dropdown/BXBDropdownMenu.vue'
 import BXBDialog from './components/BXBDialog.vue'
 import BXBButton from './components/button/BXBButton.vue'
 import BXBIconButton from './components/button/BXBIconButton.vue'
 import BXBSnackbar from './components/BXBSnackbar.vue'
 import BXBInputField from './components/BXBInputField.vue'
-import BXBDropdownMenu from './components/BXBDropdownMenu.vue'
-import BXBDropdownMultiSelect from './components/BXBDropdownMultiSelect.vue'
+import BXBDropdownMenu from './components/dropdown/BXBDropdownMenu.vue'
+import BXBDropdownMultiSelect from './components/dropdown/BXBDropdownMultiSelect.vue'
 import IconWrapper from './components/IconWrapper.vue'
 import BaseButton from './components/button/BaseButton.vue'
 import BXBTextField from './components/BXBTextField.vue'
@@ -38,7 +38,7 @@ Vue.component('BXBCheckboxGropSub', BXBCheckboxGropSub)
 Vue.component('BXBCheckboxGrop', BXBCheckboxGrop)
 Vue.component(BXBCheckbox.name, BXBCheckbox)
 Vue.component(BXBSlider.name, BXBSlider)
-Vue.component(BXBDropdown.name, BXBDropdown)
+// Vue.component(BXBDropdown.name, BXBDropdown)
 Vue.component(BXBDialog.name, BXBDialog)
 Vue.component(BXBButton.name, BXBButton)
 Vue.component(BXBIconButton.name, BXBIconButton)

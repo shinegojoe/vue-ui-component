@@ -19,7 +19,7 @@
       ref="dropdown" 
       :style="{width: width + 'px'}"
       class="item-list-wrapper" 
-      v-bind:class="{ 'menu-open': isOpen }">
+      v-bind:class="{ 'menu-open': isOpen, 'scroll': this.maxHeight !== 0 }">
       <div v-for="(item, index) in dataList" :key="index+'_'" >
           <div class="rowz"  @click="itemClick($event, item)" :style="{width: width + 'px'}">
             <div class="item-text">{{item.title}}</div>
@@ -39,12 +39,14 @@ export default {
     data: {
       type: Array,
       default: []
+      // the object of data array has to contains the title property
     },
 
     maxLength: {
-      // the maxmin title number
       type: Number,
       default: 10
+      // the maxmin title number
+
     },
 
     width: {
@@ -80,6 +82,12 @@ export default {
     height: {
       type: Number,
       default: 26
+    },
+
+    maxHeight: {
+      type: Number,
+      default: 0
+      // turn to scroll mode if maxHeight is not zero
     }
 
   },
@@ -112,7 +120,8 @@ export default {
         '--title-size': this.fontSize + 'px',
         '--title-color': this.fontColor,
         '--padding-left': pl + 'px',
-        '--height': this.height + 'px'
+        '--height': this.height + 'px',
+        '--max-height': this.maxHeight + 'px'
       }
     },
 
@@ -144,6 +153,7 @@ export default {
     },
 
     menuClick: function (e) {
+      // this.checkBottomSpace()
       this.isOpen = !this.isOpen
       this.closeOutsideManager.closeAll(this)
       e.stopPropagation()
@@ -162,12 +172,14 @@ export default {
     },
 
     checkBottomSpace: function () {
+      console.log('cb')
       // console.log('screen height', window.screen.height)
       // console.log('screen availHeight', window.screen.availHeight)
       // console.log('window.innerHeight', window.innerHeight)
 
       const dropdown = this.$refs.dropdown
       const menuHeight = parseInt(this.$refs.dropdownWrapper.offsetHeight)
+
       const dh = dropdown.offsetHeight
       // console.log('dh', dh)
       // dropdown.style.marginTop = '-235px'
@@ -231,7 +243,7 @@ export default {
 
   .menu-btn
     padding-left: var(--padding-left)
-    width: 330px
+    // width: 330px
     height: var(--height)
     box-sizing: border-box
     display: flex
@@ -241,6 +253,7 @@ export default {
     border-radius: 5px
     border: solid 1px #979797
     transition: 0.3s
+    
     // background-color: rgba(147, 255, 224, 0.2)
     // background-color: rgba(147, 255, 224, 0.2)
 
@@ -249,6 +262,8 @@ export default {
       // font-size: 12px
       color: var(--title-color)
       margin-left: 16px
+
+  
 
   .item-list-wrapper
     margin-top: 3px
@@ -263,6 +278,25 @@ export default {
     visibility: hidden
     position: absolute
     z-index: 2
+
+   
+
+      
+  .scroll
+    // display: inline
+    // visibility: hidden
+    overflow-y: scroll
+    height: var(--max-height)
+    // width: 100%
+    &::-webkit-scrollbar
+      width: 6px
+      height: 0px
+      background-color: #efefef
+    &::-webkit-scrollbar-thumb
+      border-radius: 30px
+      background-color: #dcdcdc
+      // min-height: 70px
+
 
   .menu-open
     // display: inline
@@ -310,13 +344,14 @@ export default {
     z-index: 1
   .icon-wrapper
     // position: absolute
-    left: 300px
+    // left: 300px
     // top: 5px
     // top: 50%
     
     // left: 6px
     display: flex
     align-items: center
+    // justify-content: center
     justify-content: flex-end
     // margin-left: 130px
     //margin-bottom: 5px
