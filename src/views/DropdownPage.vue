@@ -11,9 +11,15 @@
             左邊間距16px<br>
             icon靠右, 中間自動撐開
           </BXBTextField>
-          <BXBInputField value="width" @input="(e)=>{
+          <BXBInputField :value="width" @input="(e)=>{
             width = parseInt(e.target.value)
-            }" placeholder="打個200吧"></BXBInputField>
+            }" placeholder="自定義寬">
+          </BXBInputField>
+
+          <BXBInputField :value="rowHeight" @input="(e)=>{
+            rowHeight = parseInt(e.target.value)
+            }" placeholder="自定義列高">
+          </BXBInputField>
 
           <BXBDropdownMenu
             class="d-item" 
@@ -21,6 +27,7 @@
             :title="dropTitle" 
             :data="testData" 
             :width="width" 
+            :height="rowHeight"
             v-on:selectUpdate="selectUpdate">
           </BXBDropdownMenu>
         </div>
@@ -142,7 +149,7 @@
 
       <div class="dropdown-wrapper mt-200">
         <div class="item-wrapper">
-          <BXBTextField textType="capitalize" color="#979797" :size="20">normal</BXBTextField>
+          <BXBTextField textType="capitalize" color="#979797" :size="20">空間不夠往上</BXBTextField>
           <BXBDropdownMenu
             class="d-item" 
             :maxLength="6"
@@ -223,7 +230,8 @@ export default {
       testData3: [],
       dropTitle: 'item1',
       width: 80,
-      maxHeight: 80
+      maxHeight: 80,
+      rowHeight: 26
     }
   },
 
@@ -299,7 +307,7 @@ export default {
       display: flex
       justify-content: space-around
     .mt-200
-      margin-top: 140px
+      margin-top: 100px
     .mt-400
       margin-top: 400px
 

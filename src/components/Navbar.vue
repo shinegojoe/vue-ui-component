@@ -5,7 +5,7 @@
       <slot></slot>
     </div>
 
-    <div class="sidebar-wrapper" :class="sidebarTransition()">
+    <div v-show="isSidebarOpen" class="sidebar-wrapper" :class="sidebarTransition()">
       <div class="logo-wrapper">
         <IconWrapper id="bxb-logo" w="100" h="60" color="white"></IconWrapper>
       </div>
@@ -38,39 +38,23 @@ export default {
 
   data: function() {
     return {
-      isSidebarOpen: true,
+      isSidebarOpen: false,
       testData: [
+        // {
+        //   path: "/",
+        //   name: "Home",
+        //   isOpen: false,
+        //   subPages: []
+        // },
         {
-          path: "/",
-          name: "Home",
+          path: "/btn-page",
+          name: "btnPage",
           isOpen: false,
           subPages: []
-        },
-        {
-          path: "about",
-          name: "Item2",
-          isOpen: false,
-          subPages: [
-            {
-              title: "sub1"
-            },
-            {
-              title: "sub2"
-            },
-            {
-              title: "sub3"
-            },
-            {
-              title: "sub4"
-            },
-            {
-              title: "sub5"
-            }
-          ]
         },
         {
           path: "test",
-          name: "Item4",
+          name: "Test",
           isOpen: false,
           subPages: [
             {
@@ -82,26 +66,20 @@ export default {
           ]
         },
         {
-          path: "tabPage",
+          path: "/input-component-page",
+          name: "InputComponent",
+          isOpen: false,
+          subPages: []
+        },
+        {
+          path: "/dropdown-page",
+          name: "Dropdown",
+          isOpen: false,
+          subPages: []
+        },
+        {
+          path: "/tab-page",
           name: "Tab",
-          isOpen: false,
-          subPages: []
-        },
-        {
-          path: "multiSelect",
-          name: "MultiSelect",
-          isOpen: false,
-          subPages: []
-        },
-        {
-          path: "rangeSlider",
-          name: "RangeSlider",
-          isOpen: false,
-          subPages: []
-        },
-        {
-          path: "i18n",
-          name: "I18n",
           isOpen: false,
           subPages: []
         }
@@ -138,9 +116,15 @@ export default {
     },
 
     itemClick(e, item) {
-      console.log("item", item);
-      item.isOpen = !item.isOpen;
-      e.stopPropagation();
+      console.log("item", item)
+      e.stopPropagation()
+      if(item.subPages.length === 0) {
+        this.isSidebarOpen = false
+        this.$router.push(item.path)
+      } else {
+        item.isOpen = !item.isOpen
+      }
+
     },
 
     subItemClick(e, item){

@@ -78,7 +78,7 @@ export default {
 
     maxHeight: {
       type: Number,
-      default: 20
+      default: 0
       // turn to scroll mode if maxHeight is not zero
     }
 

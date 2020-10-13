@@ -9,7 +9,8 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: () => import('../views/DropdownPage.vue')
+
   },
 
   {
@@ -50,7 +51,12 @@ const routes = [
   {
     path: '/dropdown-page',
     component: () => import('../views/DropdownPage.vue')
-  }
+  },
+
+  // {
+  //   path: '/slider-page',
+  //   component: () => import('../views/SliderTest.vue')
+  // }
 ]
 
 const router = new VueRouter({
