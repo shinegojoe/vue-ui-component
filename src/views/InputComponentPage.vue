@@ -51,7 +51,7 @@
             range slider
           </BXBTextField>
           <div class="slider-content">
-            <BXBSlider v-model="sliderVal" :thumbSize="16" :height="8"></BXBSlider>
+            <BXBSlider v-model="sliderVal" :thumbSize="16"></BXBSlider>
             <BXBTextField textType="capitalize" color="#979797" :size="16">
               {{sliderVal}}
             </BXBTextField>
@@ -197,18 +197,26 @@ export default {
         align-items: center
         justify-content: space-between
       .slider-wrapper
-        padding: 0 40px
-        box-sizing: border-box
-        width: 400px
-        margin-top: 50px
-        display: flex
-        flex-direction: column
-        align-items: center
+        // background-color: blue
+        // padding: 0 40px
+        // box-sizing: border-box
+        // width: 400px
+        // margin-top: 50px
+        // display: flex
+        // flex-direction: column
+        // align-items: center
         // justify-content: center
+        // margin-top: 30px
+        
+        width: 300px
         .slider-content
           margin-top: 20px
-          width: 280px
+          // width: 120px
+          // height: 30px
           display: flex
+          
+          // background-color: red
+          // align-items: center
           justify-content: space-between
       .switch-wrapper
         // background-color: red
