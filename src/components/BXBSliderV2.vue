@@ -1,6 +1,6 @@
 <template>
   <div class="slider-wrapper" :style="styleInit()">
-    <input class="slider" 
+    <input class="slider"
       @input="change" 
       type="range" min="0" max="100" step="1" 
       :value="model">
@@ -12,7 +12,6 @@ export default {
   data: function () {
     return {
       isDown: false,
-      // val: 0
     }
   },
 
@@ -73,22 +72,14 @@ export default {
 </script>
 
 <style scoped lang="sass">
-
 .slider-wrapper
   --xx: 20%
   --right-color: #bdbdbd
   --left-color: #00a487
   --width: 0
   --height: 0
-  // display: flex
-  // align-items: center
-  // background-color: green
-  // width: 100px
-  // height: 12px
-  // position: relative
 
   .slider
-
     -webkit-appearance: none
     // overflow: hidden
     width: var(--width)
@@ -96,6 +87,8 @@ export default {
     outline: none
     border-radius: 10px
     background: linear-gradient(90deg, var(--left-color) 0%, var(--left-color) var(--xx), var(--right-color) var(--xx), var(--right-color) 100%)
+    &:hover
+      opacity: 0.8
     &::-webkit-slider-thumb
       -webkit-appearance: none
       // border: 1px solid #000000
@@ -104,6 +97,9 @@ export default {
       border-radius: 50%
       background: #00a487
       cursor: pointer
+      &:hover
+        width: calc( var(--thumb-size) * 1.4)
+        height: calc( var(--thumb-size) * 1.4)      
 
 
 
