@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="xx">
     <input 
       ref="testqqq"
       class="range-slider-2"
@@ -58,33 +58,39 @@ export default {
 </style>
 
 <style scoped lang="sass">
-
-.range-slider-2
-  --color: green
-  --thumb-size: 10px
-  // margin-top: 6px
+.xx
+  // background-color: red
   display: flex
   align-items: center
-  -webkit-appearance: none
-  // width: 300px
-  // height: 15px
-  // background: #d3d3d3
-  background-color: #bdbdbd
-  // background: var(--color)
-  outline: none
-  opacity: 1
-  -webkit-transition: .2s
-  transition: opacity .2s
-  border-radius: 6px
-  &:hover
-    opacity: 0.8
-  &::-webkit-slider-thumb
+  position: relative
+  z-index: 2
+  .range-slider-2
+    position: relative
+    --color: green
+    --thumb-size: 10px
+    // margin-top: 6px
+    display: flex
+    align-items: center
     -webkit-appearance: none
-    appearance: none
-    width: var(--thumb-size)
-    height: var(--thumb-size)
-    background: #00a487
+    // width: 300px
+    // height: 15px
+    // background: #d3d3d3
+    background-color: #bdbdbd
     // background: var(--color)
-    border-radius: 50%
-    cursor: pointer
+    outline: none
+    opacity: 1
+    -webkit-transition: .2s
+    transition: opacity .2s
+    border-radius: 6px
+    &:hover
+      opacity: 0.8
+    &::-webkit-slider-thumb
+      -webkit-appearance: none
+      appearance: none
+      width: var(--thumb-size)
+      height: var(--thumb-size)
+      background: #00a487
+      // background: var(--color)
+      border-radius: 50%
+      cursor: pointer
 </style>

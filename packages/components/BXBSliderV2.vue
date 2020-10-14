@@ -1,8 +1,6 @@
 <template>
   <div class="slider-wrapper" :style="styleInit()">
     <input class="slider"
-      @mousedown="down"
-      @mouseup="up"
       @input="change" 
       type="range" min="0" max="100" step="1" 
       :value="model">
@@ -14,8 +12,6 @@ export default {
   data: function () {
     return {
       isDown: false,
-      lastSize: 0,
-      thumb: 0
     }
   },
 
@@ -49,8 +45,7 @@ export default {
         '--xx': this.model + '%',
         '--width': this.width + 'px',
         '--height': this.height + 'px',
-        '--thumb-size': this.thumb + 'px',
-        // '--moveing-thumb': this.thumbSize * 1.2 + 'px'
+        '--thumb-size': this.thumbSize + 'px'
       }
       return styleObj
     },
@@ -58,23 +53,7 @@ export default {
     change: function (e) {
       // console.log('val', e.target.value)
       this.model = e.target.value
-    },
-
-    down: function () {
-      // this.lastSize = this.thumbSize
-      this.thumb = this.thumb * 1.2
-
-    },
-
-    up: function () {
-      this.thumb = this.lastSize
     }
-  },
-
-  mounted: function () {
-    this.thumb = this.thumbSize
-    this.lastSize = this.thumbSize
-
   },
 
   computed: {
@@ -118,9 +97,9 @@ export default {
       border-radius: 50%
       background: #00a487
       cursor: pointer
-      // &:hover
-      //   width: calc( var(--thumb-size) * 1.4)
-      //   height: calc( var(--thumb-size) * 1.4)      
+      &:hover
+        width: calc( var(--thumb-size) * 1.4)
+        height: calc( var(--thumb-size) * 1.4)      
 
 
 

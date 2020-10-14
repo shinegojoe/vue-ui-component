@@ -40,6 +40,11 @@ export default {
     isAddIcon: {
       type: Boolean,
       default: false
+    },
+
+    fontType: {
+      type: String,
+      default: 'uppercase'
     }
 
   },
@@ -51,7 +56,8 @@ export default {
 
     styleInit: function () {
       return {
-        '--margin': this.margin
+        '--margin': this.margin,
+        '--font-type': this.fontType
       }
     }
   }
@@ -62,13 +68,14 @@ export default {
 <style lang="sass" scoped>
 .btn-base
   --margin: 0 0 0 0 
+  --font-type: uppercase
   position: relative
   border: none
   min-width: 104px
   height: 32px
   // padding: 0 22px
   // border-radius: 26px
-  text-transform: uppercase
+  // text-transform: uppercase
   color: white
   // background-color: #2f52a2
   // transition: background-color 0.5s ease-in-out
@@ -80,11 +87,14 @@ export default {
   border-radius: 3px
 
   font-size: 12px
-  // font-weight: bold
+  font-weight: bold
   font-stretch: normal
   font-style: normal
   line-height: normal
   letter-spacing: normal
+  text-transform: var(--font-type)
+  
+
 
   &:after
     content: ""

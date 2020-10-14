@@ -5,7 +5,7 @@
       <div class="bxb-btn-wrapper">
         <BXBTextField textType="capitalize" color="#979797" :size="30">button style</BXBTextField>
         <div class="btn-wrapper">
-          <BXBButton type="primary">primary</BXBButton>
+          <BXBButton fontType="capitalize" type="primary">primary</BXBButton>
           <BXBButton type="secondary">second</BXBButton>
           <BXBButton type="third">third</BXBButton>
           <BXBButton type="third" :disabled="true">disabled</BXBButton>

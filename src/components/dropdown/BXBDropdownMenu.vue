@@ -113,7 +113,7 @@ export default {
     styleInit: function () {
       let pl = 0
       if(this.isLeftIcon) {
-        pl = 22
+        pl = 8
       }
 
       return {

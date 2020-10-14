@@ -2,10 +2,14 @@
 import BXBCheckboxGrop from './ckeckbox/BXBCheckboxGrop'
 import BXBCheckboxGropSub from './ckeckbox/BXBCheckboxGropSub'
 import BXBCheckbox from './ckeckbox/BXBCheckbox'
-import BXBSlider from './BXBSlider'
+// import BXBSlider from './BXBSlider'
+import BXBSlider from './BXBSliderV2'
 // import VueRouter from 'vue-router'
 import BXBInputField from './BXBInputField.vue'
-import BXBDropdownMenu from './BXBDropdownMenu.vue'
+// import BXBDropdownMenu from './BXBDropdownMenu.vue'
+import BXBDropdownMenu from './dropdown/BXBDropdownMenu.vue'
+import BXBDropdownMultiSelect from './dropdown/BXBDropdownMultiSelect.vue'
+
 import IconWrapper from './IconWrapper.vue'
 import BaseButton from './button/BaseButton.vue'
 import BXBButton from './button/BXBButton.vue'
@@ -24,6 +28,7 @@ const components = [
   BXBSlider,
   BXBInputField,
   BXBDropdownMenu,
+  BXBDropdownMultiSelect,
   IconWrapper,
   
   BaseButton,
