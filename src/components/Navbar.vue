@@ -82,6 +82,12 @@ export default {
           name: "Tab",
           isOpen: false,
           subPages: []
+        },
+        {
+          path: '/dialog-page',
+          name: 'dialog',
+          isOpen: false,
+          subPages: []
         }
       ]
     };

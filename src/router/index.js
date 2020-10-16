@@ -53,6 +53,11 @@ const routes = [
     component: () => import('../views/DropdownPage.vue')
   },
 
+  {
+    path: '/dialog-page',
+    component: () => import('../views/DialogPage.vue')
+  },
+
   // {
   //   path: '/slider-page',
   //   component: () => import('../views/SliderTest.vue')

@@ -1,5 +1,5 @@
 <template>
-  <div id="bxb-dialog-wrapper">
+  <div v-show="isOpen" id="bxb-dialog-wrapper">
     <!-- <div class="bg-cover"></div> -->
     <div class="dialog-wrapper" :style="{ '--width': width + 'px'}">
       <div class="dialog-title">{{title}}</div>
@@ -72,9 +72,12 @@ export default {
     width: 100vw
 #bxb-dialog-wrapper
   --width: 100px
-  position: relative
-  // width: 100vw
-  // height: 100vh
+  // position: relative
+  position: absolute
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
   .dialog-wrapper
     padding: 16px 16px
     box-sizing: border-box
