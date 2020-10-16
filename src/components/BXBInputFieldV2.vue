@@ -1,7 +1,9 @@
 <template>
   <div>
-    <div v-show="isHeadOn" class="head-title">{{placeholder}}</div>
+    <div v-show="isHeadOn" class="head-title" :class="{'head-active': isFocus}">{{placeholder}}</div>
       <input
+        @mousedown="mouseDown"
+        @blur="blur"
         ref="inputEle"
         v-model="model"
         :style="{width: width + 'px'}"
@@ -11,6 +13,7 @@
         :class="{'is-disabled': disabled}"
         class="input-field-wrapper"
       >
+      <div class="line" :style="{width: width + 'px'}"></div>
   </div>
 </template>
 
@@ -48,6 +51,23 @@ export default {
     }
   },
 
+  data: function () {
+    return {
+      isFocus: false
+    }
+  },
+
+  methods: {
+    mouseDown: function () {
+      this.isFocus = true
+    },
+
+    blur: function () {
+      this.isFocus = false
+    }
+  },
+
+
   computed: {
     model: {
       set(val) {
@@ -68,6 +88,12 @@ export default {
 </script>
 
 <style scoped lang="sass">
+
+.line
+  border-bottom: 1px solid #414141
+  width: 100px
+  margin-left: 2px
+
 .head-title
   font-family: Helvetica
   font-size: 12px
@@ -81,13 +107,18 @@ export default {
   text-transform: capitalize
   margin-left: 3px
 
+.head-active
+  color: #00615d
+
+
 .input-field-wrapper
+  box-sizing: border-box
   margin-top: 6px
   border: none
-  border-bottom: 1px solid #848484
+  // border-bottom: 1px solid #848484
   outline: none
   transition: border-bottom-color 0.2s ease-in
-  color: #414141
+  // color: #414141
   width: 100px
   font-family: Helvetica
   font-size: 16px
@@ -96,7 +127,8 @@ export default {
   font-style: normal
   line-height: normal
   letter-spacing: normal
-  color: #dbdbdb
+  // color: #dbdbdb
+  color: #292f34
 
   // cursor: pointer
   // -webkit-box-sizing: border-box
@@ -113,5 +145,7 @@ export default {
     color: #dbdbdb
 .is-disabled
   cursor: not-allowed
+
+
 
 </style>
