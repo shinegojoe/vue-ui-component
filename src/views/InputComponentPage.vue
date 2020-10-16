@@ -12,8 +12,11 @@
           :isHeadOn="true"
           placeholder="account">
         </BXBInputField>
+        {{account}}
+        
 
          <BXBInputField
+          ref="pwdInput"
           class="mt-20"
           :width="300"
           v-model="account" 
@@ -164,6 +167,14 @@ export default {
       selectedList: ['*1', '*4']
 
     }
+  },
+
+  mounted: function () {
+    const pwdInput = this.$refs.pwdInput
+    const inputEle = pwdInput.inputEle
+    inputEle.addEventListener('keypress', (key)=>{
+      console.log('key', key.code)
+    })
   }
   
 }
