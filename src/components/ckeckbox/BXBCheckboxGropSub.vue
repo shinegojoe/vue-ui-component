@@ -41,12 +41,12 @@ export default {
 
     checkTop: {
       type: Number,
-      default: 3
+      default: 4
     },
 
     checkLeft: {
       type: Number,
-      default: 2
+      default: 3
     }
    
   },
@@ -137,6 +137,8 @@ export default {
       background: transparent
       opacity: 0
       transform: rotate(-45deg)
+      box-sizing: border-box
+
     
     &:checked 
       background-color: #00615d
