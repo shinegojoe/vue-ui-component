@@ -6,10 +6,8 @@
       :before="beforeContent" :after="afterContent">
         <!-- <input @change="update" v-model="model" type="checkbox" :id="id" /> -->
         <input type="checkbox" v-model="model" :checked="value" :id="id"/>
-
         <!-- <label v-bind:class="{'checked': res}" :for="id"></label> -->
         <label :for="id"></label>
-        <!-- <label></label> -->
 
       </div>
     </div>
@@ -86,17 +84,19 @@ export default {
     // margin: 20px auto
     position: relative
     border-radius: 50px
+    // box-sizing: border-box
     // box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2)
   
     &:after
       content: attr(after)
       color: white
       position: absolute
+      top: 50%
       right: 4px
-      top: 5px
+      transform: translate3d(-50%, -50%, 0)
       z-index: 0
       font-size: 12px
-      -webkit-transform : scale(0.67)
+      -webkit-transform : scale(0.66) translateY(-66%)
 
       // font: 12px/26px Arial, sans-serif
       // font-weight: bold
@@ -109,14 +109,11 @@ export default {
       color: white
       position: absolute
       left: 6px
-      top: 5px
+      top: 50%
       z-index: 0
-      // font-size: 12px
-      // font: 12px/26px Arial, sans-serif
-      // font-weight: bold
       font-family: Helvetica
       font-size: 12px
-      -webkit-transform : scale(0.67)
+      -webkit-transform : scale(0.66) translateY(-66%)
       text-transform: uppercase
 
 
