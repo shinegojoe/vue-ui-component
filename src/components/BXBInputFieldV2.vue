@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="input-field-container" :style="styleInit()">
     <div v-show="isHeadOn" class="head-title" :class="{'head-active': isFocus}">{{placeholder}}</div>
       <input
         @mousedown="mouseDown"
@@ -13,7 +13,7 @@
         :class="{'is-disabled': disabled}"
         class="input-field-wrapper"
       >
-      <div class="line" :style="{width: width + 'px'}"></div>
+      <div class="line" :class="{'line-active': isFocus}" :style="{width: width + 'px'}"></div>
   </div>
 </template>
 
@@ -48,6 +48,26 @@ export default {
     width: {
       type: Number,
       default: 200
+    },
+
+    fontSize: {
+      type: Number,
+      default: 16
+    },
+
+    lineColor: {
+      type: String,
+      default: 'black'
+    },
+
+    activeColor: {
+      type: String,
+      default: 'black'
+    },
+
+    textColor: {
+      type: String,
+      default: 'black'
     }
   },
 
@@ -64,6 +84,17 @@ export default {
 
     blur: function () {
       this.isFocus = false
+      this.$emit('blur')
+    },
+
+    styleInit: function () {
+      const styleObj = {
+        '--font-size': this.fontSize + 'px',
+        '--text-color': this.textColor,
+        '--line-color': this.lineColor,
+        '--active-color' : this.activeColor,
+      }
+      return styleObj
     }
   },
 
@@ -88,68 +119,77 @@ export default {
 </script>
 
 <style scoped lang="sass">
-
-.line
-  border-bottom: 1px solid #414141
-  width: 100px
-  // margin-left: 2px
-
-.head-title
-  font-family: Helvetica
-  font-size: 12px
-  font-weight: normal
-  font-stretch: normal
-  font-style: normal
-  line-height: normal
-  letter-spacing: normal
-  color: #292f34
+#input-field-container
+  --font-size: 12px
+  --line-color: black
+  --active-color: black
+  --text-color: black
   
-  text-transform: capitalize
-  // margin-left: 3px
-  box-sizing: border-box
-  height: 16px
+
+  .line
+    border-bottom: 1px solid var(--line-color)
+    width: 100px
+    // margin-left: 2px
+  .line-active
+    border-bottom: 1px solid var(--active-color)
 
 
-.head-active
-  color: #00615d
-  font-size: 14px
-  transition: 0.5s
-
-
-.input-field-wrapper
-  box-sizing: border-box
-  margin-top: 6px
-  border: none
-  // border-bottom: 1px solid #848484
-  outline: none
-  transition: border-bottom-color 0.2s ease-in
-  // color: #414141
-  width: 100px
-  font-family: Helvetica
-  font-size: 16px
-  font-weight: normal
-  font-stretch: normal
-  font-style: normal
-  line-height: normal
-  letter-spacing: normal
-  // color: #dbdbdb
-  color: #292f34
-
-  // cursor: pointer
-  // -webkit-box-sizing: border-box
-  // -moz-box-sizing: border-box
-  // box-sizing: border-box
-
-  &:focus
-    // background-color: red
-    border-bottom-color: #00615d
-    border-bottom-width: 1px
-  &::placeholder
-    // font-size: 30px
+  .head-title
+    font-family: Helvetica
+    font-size: 12px
+    font-weight: normal
+    font-stretch: normal
+    font-style: normal
+    line-height: normal
+    letter-spacing: normal
+    color: var(--text-color)
+    
     text-transform: capitalize
-    color: #dbdbdb
-.is-disabled
-  cursor: not-allowed
+    // margin-left: 3px
+    box-sizing: border-box
+    height: 16px
+
+
+  .head-active
+    color: var(--active-color)
+    font-size: 14px
+    transition: 0.5s
+
+
+  .input-field-wrapper
+    box-sizing: border-box
+    margin-top: 6px
+    border: none
+    // border-bottom: 1px solid #848484
+    outline: none
+    transition: border-bottom-color 0.2s ease-in
+    // color: #414141
+    width: 100px
+    font-family: Helvetica
+    font-size: var(--font-size)
+    font-weight: normal
+    font-stretch: normal
+    font-style: normal
+    line-height: normal
+    letter-spacing: normal
+    // color: #dbdbdb
+    color: var(--text-color)
+
+    // cursor: pointer
+    // -webkit-box-sizing: border-box
+    // -moz-box-sizing: border-box
+    // box-sizing: border-box
+
+    // &:focus
+    //   // background-color: red
+    //   border-bottom-color: #00615d
+    //   border-bottom-width: 1px
+    &::placeholder
+      // font-size: 30px
+      text-transform: capitalize
+      color: #dbdbdb
+  .is-disabled
+    cursor: not-allowed
 
 
 
