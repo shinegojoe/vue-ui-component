@@ -1,5 +1,5 @@
 <template>
-  <div class="radio-wrapper">
+  <div class="--radio-wrapper">
     <input v-model="model" :name="name" type="radio" :id="id" :value="id">
   </div>
 </template>
@@ -38,7 +38,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.radio-wrapper
+.--radio-wrapper
+  display: flex
+  align-items: center
   @supports(-webkit-appearance: none) or (-moz-appearance: none)
     input[type='radio']
       --active: #575757
