@@ -68,16 +68,16 @@ export default {
     height: 0px
   to
     // height: calc( 100vh - 65px )
-    height: 100vh
-    width: 100vw
+    height: 100%
+    width: 100%
 #bxb-dialog-wrapper
   --width: 100px
   // position: relative
   position: absolute
   top: 0
   left: 0
-  width: 100vw
-  height: 100vh
+  width: 100%
+  height: 100%
   .dialog-wrapper
     padding: 16px 16px
     box-sizing: border-box

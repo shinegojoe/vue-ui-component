@@ -92,7 +92,7 @@ export default {
 .line
   border-bottom: 1px solid #414141
   width: 100px
-  margin-left: 2px
+  // margin-left: 2px
 
 .head-title
   font-family: Helvetica
@@ -105,10 +105,15 @@ export default {
   color: #292f34
   
   text-transform: capitalize
-  margin-left: 3px
+  // margin-left: 3px
+  box-sizing: border-box
+  height: 16px
+
 
 .head-active
   color: #00615d
+  font-size: 14px
+  transition: 0.5s
 
 
 .input-field-wrapper

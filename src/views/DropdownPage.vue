@@ -28,6 +28,7 @@
             :data="testData" 
             :width="width" 
             :height="rowHeight"
+            fontColor="black"
             v-on:selectUpdate="selectUpdate">
           </BXBDropdownMenu>
         </div>

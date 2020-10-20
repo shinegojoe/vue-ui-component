@@ -63,6 +63,7 @@ export default {
   
   text-transform: capitalize
   margin-left: 3px
+  box-sizing: border-box
 
 .input-field-wrapper
   margin-top: 6px

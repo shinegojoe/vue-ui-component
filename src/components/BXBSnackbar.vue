@@ -74,6 +74,7 @@ export default {
   line-height: normal
   letter-spacing: normal
   color: white
+  z-index: 99
 
 </style>
 

@@ -5,7 +5,7 @@ import BXBCheckbox from './ckeckbox/BXBCheckbox'
 // import BXBSlider from './BXBSlider'
 import BXBSlider from './BXBSliderV2'
 // import VueRouter from 'vue-router'
-import BXBInputField from './BXBInputField.vue'
+import BXBInputField from './BXBInputFieldV2.vue'
 // import BXBDropdownMenu from './BXBDropdownMenu.vue'
 import BXBDropdownMenu from './dropdown/BXBDropdownMenu.vue'
 import BXBDropdownMultiSelect from './dropdown/BXBDropdownMultiSelect.vue'
@@ -14,6 +14,8 @@ import IconWrapper from './IconWrapper.vue'
 import BaseButton from './button/BaseButton.vue'
 import BXBButton from './button/BXBButton.vue'
 import BXBIconButton from './button/BXBIconButton.vue'
+import BXBSwitch from './button/BXBSwitch.vue'
+import BXBRadio from './button/BXBRadio.vue'
 
 import BXBTextField from './BXBTextField.vue'
 import BXBLoader from './BXBLoader.vue'
@@ -34,6 +36,8 @@ const components = [
   BaseButton,
   BXBButton,
   BXBIconButton,
+  BXBSwitch,
+  BXBRadio,
 
   BXBTextField,
   BXBDialog,
