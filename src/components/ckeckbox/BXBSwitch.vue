@@ -2,10 +2,10 @@
   <div id="switch-container">
     <div class="box-container" >
       <div class="box-wrapper"
-        v-bind:class="{'checked': value}"
+        v-bind:class="{'checked': model}"
       :before="beforeContent" :after="afterContent">
         <!-- <input @change="update" v-model="model" type="checkbox" :id="id" /> -->
-        <input type="checkbox" v-model="model" :checked="value" :id="id"/>
+        <input type="checkbox" v-model="model" :checked="model" :id="id"/>
         <!-- <label v-bind:class="{'checked': res}" :for="id"></label> -->
         <label :for="id"></label>
 
@@ -45,9 +45,16 @@ export default {
     },
   },
 
+  watch: {
+    value: function (val) {
+      this.checkContent(val)
+    }
+  },
+
   computed: {
     model: {
       set(val) {
+        console.log('set', val)
         this.checkContent(val)
         this.$emit('input', val)
       },
