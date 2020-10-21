@@ -53,6 +53,7 @@
           <BXBIconButton type="third" id="icon_file" w="26" h="26"></BXBIconButton>
           <BXBIconButton type="no-bg" id="sync" w="26" h="26" color="#00615d"></BXBIconButton>
           <BXBIconButton :disabled="true" type="no-bg" id="power" w="26" h="26" color="#d8d8d8"></BXBIconButton>
+          <BXBSortButton v-model="isSortOn"></BXBSortButton>
         </div>
         <div class="note-wrapper">
           <BXBTextField textType="capitalize" color="#979797" :size="16">
@@ -66,6 +67,17 @@
 
 <script>
 export default {
+  data: function () {
+    return {
+      isSortOn: false
+    }
+  },
+
+  // methods: {
+  //   sortClick: function () {
+
+  //   }
+  // }
   
 }
 </script>

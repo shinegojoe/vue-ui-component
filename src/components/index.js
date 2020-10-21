@@ -2,6 +2,8 @@
 import BXBCheckboxGrop from './ckeckbox/BXBCheckboxGrop'
 import BXBCheckboxGropSub from './ckeckbox/BXBCheckboxGropSub'
 import BXBCheckbox from './ckeckbox/BXBCheckbox'
+import BXBSwitch from './ckeckbox/BXBSwitch.vue'
+import BXBRadio from './ckeckbox/BXBRadio.vue'
 // import BXBSlider from './BXBSlider'
 import BXBSlider from './BXBSliderV2'
 // import VueRouter from 'vue-router'
@@ -14,8 +16,8 @@ import IconWrapper from './IconWrapper.vue'
 import BaseButton from './button/BaseButton.vue'
 import BXBButton from './button/BXBButton.vue'
 import BXBIconButton from './button/BXBIconButton.vue'
-import BXBSwitch from './button/BXBSwitch.vue'
-import BXBRadio from './button/BXBRadio.vue'
+import BXBSortButton from './button/BXBSortButton.vue'
+
 
 import BXBTextField from './BXBTextField.vue'
 import BXBLoader from './BXBLoader.vue'
@@ -36,6 +38,7 @@ const components = [
   BaseButton,
   BXBButton,
   BXBIconButton,
+  BXBSortButton,
   BXBSwitch,
   BXBRadio,
 
