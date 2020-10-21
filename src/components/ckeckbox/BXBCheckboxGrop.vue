@@ -1,11 +1,11 @@
 
 
 <template>
-  <div>
+  <div id="select-container">
     <div v-show="isSelectAll" class="select-all-wrapper">
-      <div class="divider"></div>
+      <div v-show="isUplineOn" class="divider-up"></div>
       <slot name="select-all"></slot>
-      <div class="divider"></div>
+      <div v-show="isBottomLineOn" class="divider-bottom"></div>
     </div>
    
 
@@ -32,6 +32,21 @@ export default {
       default: false
     },
 
+    lineColor: {
+      type: String,
+      default: 'black'
+    },
+
+    isUpLineOn: {
+      type: Boolean,
+      default: false
+    },
+
+    isBottomLineOn: {
+      type: Boolean,
+      default: false
+    }
+
     // dataList: {
     //   type: Array,
     //   defalut: []
@@ -41,6 +56,12 @@ export default {
   },
 
   methods: {
+    styleInit: function() {
+      return {
+        '--line-color': this.lineColor
+      }
+    },
+
     checkSelectAll: function (val) {
       console.log('check-selecte-all', val)
       // if(val.length !== 0) {
@@ -71,9 +92,18 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.divider
+#select-container
+  --line-color: black
+
+.divider-up
   width: 100%
   // height: 1px
-  border: solid 1px #95bab9
+  border-bottom: solid 1px var(--line-color)
+  box-sizing: border-box
+
+.divider-bottom
+  width: 100%
+  // height: 1px
+  border-bottom: solid 1px var(--line-color)
   box-sizing: border-box
 </style>
