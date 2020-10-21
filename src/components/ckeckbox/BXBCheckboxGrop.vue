@@ -1,7 +1,7 @@
 
 
 <template>
-  <div id="select-container">
+  <div id="select-container" :style="styleInit()">
     <div v-show="isSelectAll" class="select-all-wrapper">
       <div v-show="isUplineOn" class="divider-up"></div>
       <slot name="select-all"></slot>
