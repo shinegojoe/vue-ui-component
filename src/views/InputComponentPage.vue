@@ -6,6 +6,11 @@
             input field
         </BXBTextField>
         <BXBInputField
+          activeColor="red"
+          lineColor="green"
+          textColor="blue"
+          @blur="blur"
+          :fontSize="16"
           class="mt-20"
           :width="300"
           v-model="account" 
@@ -169,12 +174,24 @@ export default {
     }
   },
 
+  methods: {
+    blur: function () {
+      console.log('blur')
+    }
+  },
+
   mounted: function () {
     const pwdInput = this.$refs.pwdInput
     const inputEle = pwdInput.inputEle
     inputEle.addEventListener('keypress', (key)=>{
       console.log('key', key.code)
     })
+  },
+
+  created: function () {
+    setTimeout(()=>{
+      this.switchVal = !this.switchVal
+    }, 2000)
   }
   
 }
@@ -251,7 +268,7 @@ export default {
         align-items: center
         .radio-wrapper
           // width: 400px
-          // background-color: green
+          background-color: green
           display: flex
           // margin-top: 20px
           .radio-item

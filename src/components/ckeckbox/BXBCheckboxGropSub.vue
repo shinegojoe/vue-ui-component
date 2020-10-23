@@ -16,7 +16,7 @@ export default {
 
   props: {
     label: {
-      type: String
+      // type: String
     },
 
     value: {
