@@ -1,7 +1,7 @@
 <template>
   <div id="tab-page-container">
     <div class="content-wrapper">
-      <BXBTab v-model="xx" :tabList="tabList"></BXBTab>
+      <BXBTab v-model="xx" :tabList="tabList" activeLine="red"></BXBTab>
       <!-- <BXBTextField>{{xx}}</BXBTextField> -->
       {{xx}}
     </div>

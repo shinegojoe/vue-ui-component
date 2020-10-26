@@ -1,5 +1,6 @@
 <template>
-  <div class="--radio-wrapper">
+
+  <div :class="`--${styleType}-wrapper`">
     <input v-model="model" :name="name" type="radio" :id="id" :value="id">
   </div>
 </template>
@@ -19,6 +20,11 @@ export default {
 
     name: {
 
+    },
+
+    styleType: {
+      type: String,
+      default: 'radio'
     }
   },
 
@@ -119,4 +125,43 @@ export default {
       
       &:checked
         --s: .5
+
+.--checkbox-wrapper
+  display: flex
+  align-items: center
+  input[type='radio']
+    -webkit-appearance: none
+    -moz-appearance: none
+    height: 16px
+    width: 16px
+    outline: none
+    display: inline-block
+    position: relative
+    margin: 0
+    cursor: pointer
+    border: 1px solid #979797
+    background: white
+    transition: background .3s, border-color .3s, box-shadow .2s
+
+    &::after
+      content: ''
+      width: 8px
+      height: 4px
+      position: absolute
+      top: 4px
+      left: 3px
+      border: 1px solid white
+      border-top: none
+      border-right: none
+      background: transparent
+      opacity: 0
+      transform: rotate(-45deg)
+      box-sizing: border-box
+
+    
+    &:checked 
+      background-color: #00615d
+      &::after
+        opacity: 1
+
 </style>
