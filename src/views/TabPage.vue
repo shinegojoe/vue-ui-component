@@ -4,12 +4,19 @@
       <BXBTab v-model="xx" :tabList="tabList" activeLine="red"></BXBTab>
       <!-- <BXBTextField>{{xx}}</BXBTextField> -->
       {{xx}}
+      <HC>HC</HC>
     </div>
   </div>
 </template>
 
 <script>
+import HC from '@/views/HighOrderTest.vue'
+
 export default {
+  components: {
+    HC
+  },
+
   data: function() {
     return {
       tabList: [ 'tab1', 'tab2', 'tab3'],

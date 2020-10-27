@@ -1,9 +1,6 @@
 <template>
   <div class="tabs" :style="styleInit()">
     <div class="item-wrapper">
-      <!-- <div class="item">tab1</div>
-      <div class="item active">tab2</div>
-      <div class="item">tab3</div> -->
       <div @click="itemClick(item)" 
         class="item" :class="{'active': item === value}" 
         v-for="(item, index) in tabList" :key="index">
