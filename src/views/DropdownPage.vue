@@ -116,6 +116,8 @@
             :checkW="5"
             :checkTop="2"
             :data="testData3">
+            <BXBTextField slot="text-extension" textType="capitalize" color="#979797" :size="12">not yet</BXBTextField>
+
           </BXBDropdownMultiSelect>
         </div>
 

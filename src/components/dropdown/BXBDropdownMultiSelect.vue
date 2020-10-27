@@ -17,18 +17,23 @@
       v-bind:class="{ 'menu-open': isOpen, 'scroll': this.maxHeight !== 0}">
        <BXBCheckboxGrop :isSelectAll="isSelectAll" v-model="model" :dataLength="data.length" v-on:qq="qq">
           <div @click="itemClick($event, item)" :style="{width: width + 'px'}" slot="box-grop" class="rowz" v-for="(item, index) in data" :key="index">
-            <BXBCheckboxGropSub 
-            :boxSize="$attrs['boxSize']" 
-            :check-w="$attrs['checkW']"
-            :check-h="$attrs['checkH']"
-            :check-top="$attrs['checkTop']"
-            :check-left="$attrs['checkLeft']"
+            <div class="check-wrapper">
+              <BXBCheckboxGropSub 
+                :boxSize="$attrs['boxSize']" 
+                :check-w="$attrs['checkW']"
+                :check-h="$attrs['checkH']"
+                :check-top="$attrs['checkTop']"
+                :check-left="$attrs['checkLeft']"
 
-            :ref="item.title" 
-            :label="item.title"></BXBCheckboxGropSub>
+                :ref="item.title" 
+                :label="item.title">
+              </BXBCheckboxGropSub>
+              <BXBTextField class="item-title" textType="capitalize" color="#00a487" :size="12">{{item.title}}</BXBTextField>
+
+            </div>
+           
             <!-- <div class="item-title">{{item.isChecked}}</div> -->
-            <BXBTextField class="item-title" textType="capitalize" color="#00a487" :size="12">{{item.title}}</BXBTextField>
-
+            <slot name="text-extension"></slot>
           </div>
         </BXBCheckboxGrop>
     </div>
@@ -330,8 +335,12 @@ export default {
     height: 32px
     display: flex
     align-items: center
+    justify-content: space-between
     padding: 0 16px
     box-sizing: border-box
+    .check-wrapper
+      display: flex
+      align-items: center
 
     // justify-content: space-around
     // background-color: white
