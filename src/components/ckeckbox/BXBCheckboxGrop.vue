@@ -3,7 +3,7 @@
 <template>
   <div id="select-container" :style="styleInit()">
     <div v-show="isSelectAll" class="select-all-wrapper">
-      <div v-show="isUplineOn" class="divider-up"></div>
+      <div v-show="isUpLineOn" class="divider-up"></div>
       <slot name="select-all"></slot>
       <div v-show="isBottomLineOn" class="divider-bottom"></div>
     </div>
@@ -41,6 +41,7 @@ export default {
       type: Boolean,
       default: false
     },
+
 
     isBottomLineOn: {
       type: Boolean,

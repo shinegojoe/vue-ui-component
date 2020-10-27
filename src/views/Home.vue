@@ -8,7 +8,13 @@
         <div class="component-title">multi-checkbox</div>
         <!-- <BXBCheckbox v-model="isSelectAll" v-on:qq="qq"></BXBCheckbox> -->
 
-        <BXBCheckboxGrop :isSelectAll="true" v-model="selectedList" :dataLength="testData.length" v-on:selectAllUpdate="selectAllUpdate">
+        <BXBCheckboxGrop 
+        :isUplineOn="false"
+        :isBottomLineOn="true" 
+        :isSelectAll="true" 
+        v-model="selectedList" 
+        :dataLength="testData.length"
+         v-on:selectAllUpdate="selectAllUpdate">
           
           <div slot="select-all" class="head-wrapper">
             <BXBCheckbox class="item0" v-model="isSelectAllModel"></BXBCheckbox>

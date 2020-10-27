@@ -13,14 +13,14 @@ class CloseOutsideManager {
   }
 
   registe (menu) {
-    console.log('registe', menu)
+    // console.log('registe', menu)
     this.menuList.set(menu._uid, menu)
   }
 
   closeAll (current) {
     for (const item of this.menuList.values()) {
       if (current !== item) {
-        console.log('item', item)
+        // console.log('item', item)
         item.closeOutside()
       }
     }

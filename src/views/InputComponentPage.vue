@@ -98,7 +98,7 @@
           <div class="radio-wrapper">
               <div class="radio-item">
       
-                <BXBRadio name="x1xx" v-model="radioSelected" id="qq1"></BXBRadio>
+                <BXBRadio styleType="checkbox" name="x1xx" v-model="radioSelected" id="qq1"></BXBRadio>
                 <BXBTextField class="radio-text" textType="capitalize" color="#979797" :size="12">qq1</BXBTextField>
               </div>
 

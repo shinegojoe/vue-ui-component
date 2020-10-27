@@ -33,7 +33,9 @@
             </div>
            
             <!-- <div class="item-title">{{item.isChecked}}</div> -->
-            <slot name="text-extension"></slot>
+            <!-- <slot name="text-extension">{{item.title}}</slot> -->
+            <div :style="extensionStyle(item.title)" v-show="isExtension">{{(extensionFilter(item.title))}}</div>
+            
           </div>
         </BXBCheckboxGrop>
     </div>
@@ -49,6 +51,11 @@ export default {
   props: {
     value: {
 
+    },
+
+    item: {
+      // when the menu clicked, this item will be retuen
+      
     },
 
     data: {
@@ -85,7 +92,26 @@ export default {
       type: Number,
       default: 0
       // turn to scroll mode if maxHeight is not zero
+    },
+
+    isExtension: {
+      // the extension text after item
+      type: Boolean,
+      default: false
+    },
+
+    extensionFilter: {
+      // the filter function of extension text
+      type: Function,
+      default: ()=>{}
+    },
+
+    extensionStyle: {
+      // the style of extension text
+      type: Function,
+      default: ()=>{}
     }
+    // }
 
     // boxSize: {
       
@@ -111,6 +137,8 @@ export default {
   // },
 
   methods: {
+    
+
     qq: function () {
       console.log('qq click')
     },
@@ -180,6 +208,7 @@ export default {
 
     menuClick: function (e) {
       this.isOpen = !this.isOpen
+      this.$emit('menuClick', this.item)
       this.closeOutsideManager.closeAll(this)
       e.stopPropagation()
     },
@@ -199,7 +228,9 @@ export default {
         })
         this.model = newData
       }
-      this.$emit('inputXX', this.model)
+      // this.$emit('inputXX', this.model)
+      this.$emit('itemClick', item)
+
       e.stopPropagation()
     },
 
