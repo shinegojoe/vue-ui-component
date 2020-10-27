@@ -9,7 +9,8 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('../views/DropdownPage.vue')
+    // component: () => import('../views/DropdownPage.vue')
+    component: () => import('../views/Home.vue')
 
   },
 

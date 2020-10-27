@@ -12,6 +12,8 @@ import BXBSlider from './components/BXBSliderV2.vue'
 import BXBDialog from './components/BXBDialog.vue'
 import BXBButton from './components/button/BXBButton.vue'
 import BXBIconButton from './components/button/BXBIconButton.vue'
+import BXBSortButton from './components/button/BXBSortButton.vue'
+
 import BXBSnackbar from './components/BXBSnackbar.vue'
 import BXBInputField from './components/BXBInputFieldV2.vue'
 import BXBDropdownMenu from './components/dropdown/BXBDropdownMenu.vue'
@@ -22,6 +24,7 @@ import BXBTextField from './components/BXBTextField.vue'
 import BXBLoader from './components/BXBLoader.vue'
 import BXBNavbar from './components/Navbar.vue'
 import BXBTab from './components/BXBTab.vue'
+import BGCover from './components/BGCover.vue'
 
 import _main from './sass/main.sass'
 // import xx from '../packages/index.js'
@@ -42,6 +45,8 @@ Vue.component(BXBSlider.name, BXBSlider)
 Vue.component(BXBDialog.name, BXBDialog)
 Vue.component(BXBButton.name, BXBButton)
 Vue.component(BXBIconButton.name, BXBIconButton)
+Vue.component(BXBSortButton.name, BXBSortButton)
+
 Vue.component(BXBSnackbar.name, BXBSnackbar)
 Vue.component(BXBInputField.name, BXBInputField)
 Vue.component(BXBDropdownMenu.name, BXBDropdownMenu)
@@ -54,6 +59,7 @@ Vue.component(BXBSwitch.name, BXBSwitch)
 Vue.component(BXBRadio.name, BXBRadio)
 Vue.component(BXBNavbar.name, BXBNavbar)
 Vue.component(BXBTab.name, BXBTab)
+Vue.component(BGCover.name, BGCover)
 
 
 

@@ -6,6 +6,8 @@
         <BXBButton @click="snackbarClick">snackbar</BXBButton>
         <BXBButton @click="dialogClick" type="secondary">del</BXBButton>
         <BXBButton @click="loadingClick" type="third">loading</BXBButton>
+        <BXBButton @click="bgCover" type="third">bg cover</BXBButton>
+
       </div>
 
     </div>
@@ -22,6 +24,7 @@
       </div>
     </BXBDialog>
     <BXBLoader v-model="isLoading"></BXBLoader>
+    <BGCover v-model="isCoverOn"></BGCover>
 
   </div>
 </template>
@@ -33,7 +36,8 @@ export default {
       isLoading: false,
       isDialogOpen: false,
       isSnackbarOpen: false,
-      snackbarMsg: 'this is snackbar'
+      snackbarMsg: 'this is snackbar',
+      isCoverOn: false
     }
   },
 
@@ -54,6 +58,13 @@ export default {
       this.isLoading = true
       setTimeout(()=>{
         this.isLoading = false
+      }, 3000)
+    },
+
+    bgCover: function () {
+      this.isCoverOn = true
+      setTimeout(()=>{
+        this.isCoverOn = false
       }, 3000)
     }
   }

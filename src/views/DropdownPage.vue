@@ -107,6 +107,9 @@
           <!-- {{multiSelectTitle}} -->
 
           <BXBDropdownMultiSelect 
+            :extensionFilter="testFn"
+            v-on:menuClick="menuClick"
+            :item="{title: 'test item'}"
             @inputXX="multiSelectUpdate"
             v-model="multiSelectedList"
             :title="multiSelectTitle"
@@ -124,7 +127,10 @@
         <div class="item-wrapper">
           <BXBTextField textType="capitalize" color="#979797" :size="20">scroll</BXBTextField>
           <BXBDropdownMultiSelect 
-            @inputXX="multiSelectUpdate"
+            :extensionStyle="extensionStyle"
+            :isExtension="true"
+            :extensionFilter="testFn"
+            @itemClick="multiSelectUpdate"
             v-model="multiSelectedList"
             :title="multiSelectTitle"
             :width="160"
@@ -166,6 +172,7 @@
         <div class="item-wrapper">
           <BXBTextField textType="capitalize" color="#979797" :size="20">scroll</BXBTextField>
           <BXBDropdownMenu
+      
             class="d-item" 
             :maxLength="6"
             :title="dropTitle" 
@@ -246,8 +253,19 @@ export default {
       
       return data
     },
-    
 
+    testFn: function (data) {
+      if(data === 'item1') {
+        return data
+      }
+    },
+
+    extensionStyle: function (data) {
+      return {
+        'color': 'red'
+      }
+    },
+    
     multiSelectUpdate: function (items) {
       console.log('multiSelectUpdate', items)
       // let title = ''
@@ -260,6 +278,10 @@ export default {
 
     selectUpdate: function (item) {
       console.log('upup', item)
+    },
+
+    menuClick(item) {
+      console.log('menuClick', item)
     }
   },
 
