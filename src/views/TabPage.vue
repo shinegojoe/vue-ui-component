@@ -1,10 +1,18 @@
 <template>
   <div id="tab-page-container">
     <div class="content-wrapper">
+
       <BXBTab v-model="xx" :tabList="tabList" activeLine="red"></BXBTab>
-      <!-- <BXBTextField>{{xx}}</BXBTextField> -->
-      {{xx}}
-      <HC>HC</HC>
+      <BXBTextField color="black">{{xx}}</BXBTextField>
+
+      <div class="pagination-wrapper">
+        <BXBPagination
+        :endIndex="2"
+        :maxLength="10"
+        v-on:pageChange="pageChange"></BXBPagination>
+      </div>
+      <div>{{pageIndex}}</div>
+
     </div>
   </div>
 </template>
@@ -20,7 +28,14 @@ export default {
   data: function() {
     return {
       tabList: [ 'tab1', 'tab2', 'tab3'],
-      xx: 'tab1'
+      xx: 'tab1',
+      pageIndex: 1
+    }
+  },
+
+  methods: {
+    pageChange: function(index) {
+      this.pageIndex = index
     }
   }
 
@@ -37,5 +52,11 @@ export default {
     box-sizing: border-box
     padding: 1px 30px 30px 30px 
     background-color: white
+    display: flex
+    flex-direction: column
+    align-items: center
+    .pagination-wrapper
+      // background-color: red
+
 
 </style>

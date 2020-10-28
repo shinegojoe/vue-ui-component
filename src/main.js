@@ -25,6 +25,7 @@ import BXBLoader from './components/BXBLoader.vue'
 import BXBNavbar from './components/Navbar.vue'
 import BXBTab from './components/BXBTab.vue'
 import BGCover from './components/BGCover.vue'
+import BXBPagination from './components/BXBPagination.vue'
 
 import _main from './sass/main.sass'
 // import xx from '../packages/index.js'
@@ -60,6 +61,7 @@ Vue.component(BXBRadio.name, BXBRadio)
 Vue.component(BXBNavbar.name, BXBNavbar)
 Vue.component(BXBTab.name, BXBTab)
 Vue.component(BGCover.name, BGCover)
+Vue.component(BXBPagination.name, BXBPagination)
 
 
 

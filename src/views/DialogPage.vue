@@ -7,8 +7,8 @@
         <BXBButton @click="dialogClick" type="secondary">del</BXBButton>
         <BXBButton @click="loadingClick" type="third">loading</BXBButton>
         <BXBButton @click="bgCover" type="third">bg cover</BXBButton>
-
       </div>
+
 
     </div>
 

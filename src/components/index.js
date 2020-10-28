@@ -25,6 +25,7 @@ import BXBDialog from './BXBDialog.vue'
 import BXBSnackbar from './BXBSnackbar.vue'
 import BGCover from './BGCover.vue'
 import BXBTab from './BXBTab.vue'
+import BXBPagination from './BXBPagination.vue'
 import { SortHelper } from '../models/sortHelper.js'
 
 
@@ -51,7 +52,8 @@ const components = [
   BXBLoader,
   BXBSnackbar,
   BGCover,
-  BXBTab
+  BXBTab,
+  BXBPagination
 ]
 
 const install  = function (Vue) {
