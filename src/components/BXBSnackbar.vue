@@ -54,7 +54,7 @@ export default {
 
 <style lang="sass" scoped>
 .snackbar-wrapper
-  position: absolute
+  position: fixed
   right: 32px
   bottom: 32px
   width: 400px
