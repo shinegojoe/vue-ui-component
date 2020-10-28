@@ -78,6 +78,11 @@ export default {
       default: 200
     },
 
+    height: {
+      type: Number,
+      default: 32
+    },
+
     title: {
       type: [String, Array],
       default: ''
@@ -311,11 +316,13 @@ export default {
 
   .menu-btn
     width: 330px
-    height: 26px
+    height: var(--height)
     border: 1px solid
     box-sizing: border-box
     display: flex
     align-items: center
+    justify-content: space-between
+
     position: relative
     border-radius: 5px
     border: solid 1px #979797
@@ -363,7 +370,7 @@ export default {
 
   .rowz
     width: 330px
-    height: 32px
+    height: var(--height)
     display: flex
     align-items: center
     justify-content: space-between
@@ -399,15 +406,17 @@ export default {
     // .menu-open
     //   visibility: visible
   .icon-wrapper
-    position: absolute
-    left: 300px
-    top: 1px
+    // position: absolute
+    // left: 300px
+    // top: 1px
     // left: 6px
+    // width: 100%
     display: flex
     align-items: center
-    justify-content: flex-end
+    // justify-content: flex-end
+
     // margin-left: 130px
-    margin-bottom: 5px
+    // margin-bottom: 5px
     transform: rotate(0deg)
     transition: 0.5s
     color: #979797
